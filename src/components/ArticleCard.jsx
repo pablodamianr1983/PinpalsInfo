@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import api from '../services/api';
 
-const ArticleCard = ({ article, onDelete, authorProfile }) => {
+const ArticleCard = ({ article, onDelete, authorProfile, index }) => {
   const { isAuthenticated, token, userProfile } = useAuth();
   const [error, setError] = useState('');
 
@@ -34,7 +34,7 @@ const ArticleCard = ({ article, onDelete, authorProfile }) => {
   };
 
   return (
-    <div className="card article-card" style={{ backgroundImage: `url(${article.image})` }}>
+    <div className={`card article-card ${index < 2 ? 'large-card' : 'small-card'}`} style={{ backgroundImage: `url(${article.image})` }}>
       <div className="overlay"></div> {/* Oscurecimiento de fondo */}
       <div className="content">
         <h2>{article.title}</h2>

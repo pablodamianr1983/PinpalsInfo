@@ -8,7 +8,7 @@ const Home = () => {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
-  const [visibleArticles, setVisibleArticles] = useState(3); //articulos por paginas
+  const [visibleArticles, setVisibleArticles] = useState(5); //articulos por paginas
   const [searchResults, setSearchResults] = useState([]);
   const [categories, setCategories] = useState([]);
   const [userProfiles, setUserProfiles] = useState({});
@@ -144,14 +144,26 @@ const Home = () => {
       {loading && <div>Loading articles...</div>}
       {error && <div style={{ color: 'red' }}>{error}</div>}
       <div className="articles-container">
-        {!loading && !error && searchResults.slice(0, visibleArticles).map(article => (
+        {!loading && !error && searchResults.slice(0, 2).map(article => (
           <ArticleCard
             key={article.id}
             article={article}
             onDelete={handleDeleteArticle}
             authorProfile={userProfiles[article.author]} // Pasar el perfil del autor si está disponible
+            className="large-card"
           />
         ))}
+        <div className="small-cards-container">
+          {!loading && !error && searchResults.slice(2, visibleArticles).map(article => (
+            <ArticleCard
+              key={article.id}
+              article={article}
+              onDelete={handleDeleteArticle}
+              authorProfile={userProfiles[article.author]} // Pasar el perfil del autor si está disponible
+              className="small-card"
+            />
+          ))}
+        </div>
       </div>
       {!loading && !error && visibleArticles < searchResults.length && (
         <button onClick={handleShowMore} className="show-more-button">
