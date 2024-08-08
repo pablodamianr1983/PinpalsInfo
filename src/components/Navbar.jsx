@@ -9,17 +9,17 @@ const Navbar = () => {
     <nav>
       <div className="left">
         <Link to="/">Home</Link>
-        {isAuthenticated && <Link to="/create-article">Create New Article</Link>}
+        {isAuthenticated && <Link to="/create-article">Crear nuevo artículo</Link>}
       </div>
       <div className="right">
         {isAuthenticated ? (
           <>
-            <span>Welcome, {userProfile.first_name || 'User'}!</span>
-            <Link to="/profile">Profile</Link>
-            <button onClick={logout}>Logout</button>
+            <span>Hola, {userProfile.first_name || 'User'}!</span>
+            <Link to="/profile">Perfil</Link>
+            <button onClick={logout}>Salir</button>
           </>
         ) : (
-          <Link to="/login">Login</Link>
+          <Link to="/login">Entrar</Link>
         )}
       </div>
     </nav>

@@ -1,0 +1,12 @@
+@import 'bulma/css/bulma.css';
+.custom-footer {
+  background-color: hsl(0, 0%, 21%) !important; 
+}
+
+.custom-footer a {
+  color: #ffffff; /* Texto e íconos blancos */
+}
+
+.custom-footer a:hover {
+  color: #dddddd; /* Color de hover para los enlaces */
+}

@@ -6,6 +6,7 @@ import ArticleDetail from './pages/ArticleDetail';
 import ProfilePage from './pages/ProfilePage';
 import EditArticle from './pages/EditArticle'; 
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 import CreateArticle from './pages/CreateArticle';
 import NotFound from './pages/NotFound';
 import { AuthProvider } from './contexts/AuthContext';
@@ -27,6 +28,7 @@ const App = () => (
       </Route>
       <Route path="*" element={<NotFound />} />
     </Routes>
+    <Footer />
   </AuthProvider>
 );
 
