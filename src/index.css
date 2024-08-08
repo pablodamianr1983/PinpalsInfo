@@ -43,7 +43,7 @@ body {
 .navbar-item {
   color: var(--navbar-item-color);
   display: flex;
-  align-items: center; /* Centra los elementos verticalmente */
+  align-items: center; /* Centra los elementos verticalmente  */
 }
 
 .button.is-light {
