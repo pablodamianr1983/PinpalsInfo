@@ -32,28 +32,6 @@ body {
   transition: background-color 0.5s ease, color 0.5s ease; /* Transición suave para el cambio de tema */
 }
 
-.navbar {
-  background-color: var(--navbar-background-color);
-  height: 90px; /* Altura de la navbar */
-  display: flex;
-  align-items: center; /* Centra los elementos verticalmente */
-  transition: background-color 0.5s ease; /* Transición suave para el cambio de tema */
-}
-
-.navbar-item {
-  color: var(--navbar-item-color);
-  display: flex;
-  align-items: center; /* Centra los elementos verticalmente  */
-}
-
-.button.is-light {
-  background-color: #ffffff;
-  color: #000000;
-}
-
-.icon i {
-  color: var(--icon-color);
-}
 
 .card,
 .search-card {

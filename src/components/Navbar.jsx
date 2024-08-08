@@ -4,11 +4,12 @@ import { useAuth } from '../contexts/AuthContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
 import logo from '../assets/pinpals-logo.png';
-import '../App.css';
+import '../styles/Navbar.css';
 
 const Navbar = () => {
   const { isAuthenticated, logout, userProfile } = useAuth();
   const [isLightMode, setIsLightMode] = useState(false);
+  const [isActive, setIsActive] = useState(false);
 
   // Tema oscuro por defecto
   useEffect(() => {
@@ -20,27 +21,37 @@ const Navbar = () => {
     setIsLightMode(!isLightMode);
   };
 
+  const toggleBurgerMenu = () => {
+    setIsActive(!isActive);
+  };
+
   return (
-    <nav className="navbar" role="navigation" aria-label="main navigation">
-      <div className="navbar is-warning">
+    <nav className="navbar is-warning" role="navigation" aria-label="main navigation">
+      <div className="navbar-brand">
         <Link to="/" className="navbar-item">
           <img src={logo} alt="Logo" className="logo" />
         </Link>
-        <Link to="/" className="navbar-item">
-          Home 
-        </Link>
-        <Link to="/" className="navbar-item">
-          Quienes Somos 
-        </Link>
-        <div className="navbar-burger burger" data-target="navbarBasicExample">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
+        <button
+          className={`navbar-burger burger ${isActive ? 'is-active' : ''}`}
+          aria-label="menu"
+          aria-expanded="false"
+          data-target="navbarBasicExample"
+          onClick={toggleBurgerMenu}
+        >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </button>
       </div>
 
-      <div id="navbarBasicExample" className="navbar-menu">
-        <div className="navbar is-warning">
+      <div id="navbarBasicExample" className={`navbar-menu ${isActive ? 'is-active' : ''}`}>
+        <div className="navbar-start">
+          <Link to="/" className="navbar-item">
+            Home
+          </Link>
+          <Link to="/" className="navbar-item">
+          | Quienes Somos
+          </Link>
           {isAuthenticated && (
             <Link to="/create-article" className="navbar-item">
               Crear entrada
