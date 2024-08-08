@@ -1,3 +1,68 @@
+@import 'bulma/css/bulma.css';
+
+/* Variable tema oscuro */
+:root {
+  --background-color: #121212;
+  --text-color: #ffffff;
+  --navbar-background-color: #1c1c1c;
+  --navbar-item-color: #ffffff;
+  --icon-color: #ffffff;
+  --card-background-color: #2c2c2c;
+  --card-text-color: #ffffff;
+}
+
+/* Tema blanco variables */
+.light-theme {
+  --background-color: #ffffff;
+  --text-color: #000000;
+  --navbar-background-color: #f8f8f8;
+  --navbar-item-color: #000000;
+  --icon-color: #000000;
+  --card-background-color: #ffffff;
+  --card-text-color: #000000;
+}
+
+/* Apply Theme Variables */
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+.navbar {
+  background-color: var(--navbar-background-color);
+}
+
+.navbar-item {
+  color: var(--navbar-item-color);
+}
+
+.button.is-light {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+
+.icon i {
+  color: var(--icon-color);
+}
+
+.card,
+.search-card {
+  background-color: var(--card-background-color);
+  color: var(--card-text-color);
+}
+
+
+.logo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+  
+
+
+
+
 body {
   background-color: #121212;
   color: #e0e0e0;
@@ -15,20 +80,7 @@ nav {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-nav a {
-  color: #c89ffa;
-  text-decoration: none;
-  margin-right: 1rem;
-}
 
-nav button {
-  background-color: #a156fd;
-  border: none;
-  color: #121212;
-  padding: 0.5rem 1rem;
-  cursor: pointer;
-  border-radius: 5px;
-}
 
 nav .profile-greeting {
   display: flex;
@@ -97,17 +149,6 @@ button, input, textarea, select {
   box-sizing: border-box;
 }
 
-button {
-  background-color: #bb86fc;
-  border: none;
-  cursor: pointer;
-  text-align: center;
-}
-
-button:hover {
-  background-color: #bb86fc;
-  opacity: 0.9;
-}
 
 textarea {
   resize: vertical;

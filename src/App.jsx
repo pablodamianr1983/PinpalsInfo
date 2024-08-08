@@ -12,6 +12,11 @@ import NotFound from './pages/NotFound';
 import { AuthProvider } from './contexts/AuthContext';
 import VideoBackground from './components/VideoBackground';
 import ProtectedRoute from './components/ProtectedRoute';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+
+library.add(fas);
+
 
 const App = () => (
   <AuthProvider>
