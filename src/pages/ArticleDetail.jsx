@@ -152,7 +152,10 @@ const ArticleDetail = () => {
         <span className="article-meta">Author: {getAuthorName(article.author)}</span>
         <span className="article-meta">Created at: {new Date(article.created_at).toLocaleDateString()}</span>
       </div>
-      <p className="article-content">{article.content}</p>
+      <div
+        className="article-content"
+        dangerouslySetInnerHTML={{ __html: article.content }}
+      />
       {error && <div style={{ color: 'red' }}>{error}</div>}
       <CommentForm
         articleId={id}

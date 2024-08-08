@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import api from '../services/api';
 import { useAuth } from '../contexts/AuthContext';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css'; // Importa los estilos de Quill
 
 const CreateArticle = () => {
   const { id } = useParams();
@@ -107,7 +109,6 @@ const CreateArticle = () => {
           },
         });
 
-        
         const existingCategories = await api.get(`/infosphere/articles/${id}/categories/`, {
           headers: {
             Authorization: `Token ${token}`,
@@ -177,14 +178,13 @@ const CreateArticle = () => {
           value={abstract}
           onChange={(e) => setAbstract(e.target.value)}
         ></textarea>
-        <textarea
-          id="content"
-          name="content"
-          placeholder="Content"
+        <ReactQuill
           value={content}
-          onChange={(e) => setContent(e.target.value)}
+          onChange={setContent}
+          placeholder="Content"
+          theme="snow"
           required
-        ></textarea>
+        />
         <input
           id="image"
           name="image"
