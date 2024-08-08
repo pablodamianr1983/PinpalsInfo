@@ -50,7 +50,7 @@ const Navbar = () => {
             Home
           </Link>
           <Link to="/" className="navbar-item">
-          | Quienes Somos
+            Quienes Somos
           </Link>
           {isAuthenticated && (
             <Link to="/create-article" className="navbar-item">
