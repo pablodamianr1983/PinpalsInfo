@@ -1,5 +1,4 @@
-/* Profile.css */
-
+/* Estilos para la tarjeta de perfil */
 .profile-card {
   display: flex;
   align-items: center;
@@ -21,9 +20,67 @@
   margin: 0.25rem 0;
 }
 
+
+.custom-user-id strong {
+  color: #ff6347; 
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+
+.profile-details strong {
+  color: #a883a2; 
+}
+
+
 .profile-image img {
   width: 100px;
   height: 100px;
   border-radius: 50%;
   object-fit: cover;
+}
+
+
+.article-list-table {
+  width: 100%;
+  margin-top: 1rem;
+  border-collapse: collapse;
+  background: #1e1e1e;
+  color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.article-list-table th,
+.article-list-table td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+}
+
+.article-list-table th {
+  background-color: #333333;
+  color: #ffffff;
+}
+
+.article-list-table tr:nth-child(even) {
+  background-color: #2c2c2c;
+}
+
+.article-list-table tr:hover {
+  background-color: #3a3a3a;
+}
+
+.article-list-table a {
+  color: #1e90ff;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  background-color: #444444;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.article-list-table a:hover {
+  background-color: #1e90ff;
+  color: #ffffff;
 }
