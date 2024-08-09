@@ -23,9 +23,15 @@ const CreateArticle = () => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const response = await api.get('/infosphere/categories/');
+        const response = await api.get('/infosphere/categories/', {
+          headers: {
+            Authorization: `Token ${token}`,
+          },
+        });
         if (Array.isArray(response.data.results)) {
           setCategories(response.data.results);
+        } else {
+          console.error('Unexpected response format:', response.data);
         }
       } catch (error) {
         console.error('Failed to fetch categories:', error);
@@ -46,7 +52,7 @@ const CreateArticle = () => {
           setTitle(article.title);
           setAbstract(article.abstract);
           setContent(article.content);
-          setSelectedCategories(article.categories);
+          setSelectedCategories(article.categories.map(category => category.id));
           setImage(article.image); // imagen del articulo
         } catch (error) {
           console.error('Failed to fetch article:', error);
@@ -78,12 +84,28 @@ const CreateArticle = () => {
           Authorization: `Token ${token}`,
         },
       });
-      setCategories([...categories, response.data]);
-      setSelectedCategories([...selectedCategories, response.data.id]);
+      const newCat = response.data;
+      setCategories((prevCategories) => [...prevCategories, newCat]);
+      setSelectedCategories((prevSelectedCategories) => [...prevSelectedCategories, newCat.id]);
       setNewCategory('');
     } catch (error) {
       console.error('Failed to add category:', error);
       setCategoryError('Failed to add category. Please try again later.');
+    }
+  };
+
+  const handleDeleteCategory = async (categoryId) => {
+    try {
+      await api.delete(`/infosphere/categories/${categoryId}/`, {
+        headers: {
+          Authorization: `Token ${token}`,
+        },
+      });
+      setCategories((prevCategories) => prevCategories.filter(category => category.id !== categoryId));
+      setSelectedCategories((prevSelectedCategories) => prevSelectedCategories.filter(id => id !== categoryId));
+    } catch (error) {
+      console.error('Failed to delete category:', error);
+      setCategoryError('Failed to delete category. Please try again later.');
     }
   };
 
@@ -209,12 +231,22 @@ const CreateArticle = () => {
             value={newCategory}
             onChange={(e) => setNewCategory(e.target.value)}
           />
-          <button type="button" onClick={handleAddCategory}>Add Category</button>
-          {categoryError && <div className="error-message">{categoryError}</div>}
+          <button type="button" className="add-category-btn" onClick={handleAddCategory}>
+            Add Category
+          </button>
+          <button
+            type="button"
+            className="delete-category-btn"
+            onClick={() => handleDeleteCategory(selectedCategories[selectedCategories.length - 1])}
+            disabled={selectedCategories.length === 0}
+          >
+            Delete Last Category
+          </button>
         </div>
         <button type="submit">{id ? 'Update' : 'Create'}</button>
       </form>
       {error && <div className="error-message">{error}</div>}
+      {categoryError && <div className="error-message">{categoryError}</div>}
     </div>
   );
 };
