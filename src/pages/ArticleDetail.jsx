@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import api from '../services/api';
 import { useAuth } from '../contexts/AuthContext';
 import CommentForm from '../components/CommentForm';
+import './ArticleDetail.css';  // Importación del archivo CSS
 
 const ArticleDetail = () => {
   const { id } = useParams();
@@ -163,15 +164,14 @@ const ArticleDetail = () => {
         commentToEdit={commentToEdit}
         onEditComplete={handleEditComplete}
       />
-      <div>
+      <div className="comment-section">
         {comments.map(comment => (
-          <div key={comment.id} style={{ marginBottom: '1rem', padding: '0.5rem', background: '#2c2c2c', borderRadius: '5px' }}>
-            <div style={{ display: 'flex', alignItems: 'center' }}>
+          <div key={comment.id} className="comment-container">
+            <div className="comment-header">
               {getAuthorImage(comment.author) && (
                 <img
                   src={getImageUrl(getAuthorImage(comment.author))}
                   alt="Profile"
-                  style={{ width: '40px', height: '40px', borderRadius: '50%', marginRight: '0.5rem' }}
                 />
               )}
               <p><strong>{getAuthorName(comment.author)}</strong>: {comment.content}</p>

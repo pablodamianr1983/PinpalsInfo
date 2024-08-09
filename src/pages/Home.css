@@ -1,0 +1,45 @@
+/* Home.css */
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.articles-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.large-card {
+  flex: 2;
+}
+
+.small-cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.small-card {
+  flex: 1;
+  min-width: 300px;
+}
+
+.show-more-button {
+  display: block;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 2rem auto;
+  text-align: center;
+}
+
+.show-more-button:hover {
+  opacity: 0.8;
+}
+

@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import api from '../services/api';
+import './Profile.css';  // Importación del archivo CSS
 
 const Profile = () => {
   const { userProfile, token, setUserProfile } = useAuth();
@@ -45,7 +46,7 @@ const Profile = () => {
           page += 1;
         }
 
-        // ordena por fecha de creacion
+        // ordena por fecha de creación
         userArticles.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
 
         setArticles(userArticles);

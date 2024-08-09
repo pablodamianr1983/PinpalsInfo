@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import api from '../services/api';
 import { useAuth } from '../contexts/AuthContext';
+import './CommentForm.css';  // Importación del archivo CSS específico
 
 const CommentForm = ({ articleId, onCommentAdded, commentToEdit, onEditComplete }) => {
   const [content, setContent] = useState(commentToEdit ? commentToEdit.content : '');
@@ -18,7 +19,7 @@ const CommentForm = ({ articleId, onCommentAdded, commentToEdit, onEditComplete 
     setError('');
     try {
       if (commentToEdit) {
-        // editar comentarios
+        // editar comentario
         await api.patch(`/infosphere/comments/${commentToEdit.id}/`, { content }, {
           headers: {
             Authorization: `Token ${token}`,
@@ -26,7 +27,7 @@ const CommentForm = ({ articleId, onCommentAdded, commentToEdit, onEditComplete 
         });
         onEditComplete(commentToEdit.id, content);
       } else {
-        // agragear comentarios
+        // agregar comentario
         const response = await api.post('/infosphere/comments/', { content, article: articleId }, {
           headers: {
             Authorization: `Token ${token}`,
@@ -52,7 +53,7 @@ const CommentForm = ({ articleId, onCommentAdded, commentToEdit, onEditComplete 
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="comment-form" onSubmit={handleSubmit}>
       <textarea
         id="comment-content"
         name="comment-content"
@@ -61,7 +62,7 @@ const CommentForm = ({ articleId, onCommentAdded, commentToEdit, onEditComplete 
         required
       ></textarea>
       <button type="submit">{commentToEdit ? 'Update Comment' : 'Comment'}</button>
-      {error && <div style={{ color: 'red' }}>{error}</div>}
+      {error && <div className="error">{error}</div>}
     </form>
   );
 };

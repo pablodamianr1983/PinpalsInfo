@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import api from '../services/api';
+import './ArticleCard.css';
 
-const ArticleCard = ({ article, onDelete, authorProfile, index }) => {
+const ArticleCard = ({ article, onDelete, authorProfile }) => {
   const { isAuthenticated, token, userProfile } = useAuth();
   const [error, setError] = useState('');
 
@@ -34,8 +35,8 @@ const ArticleCard = ({ article, onDelete, authorProfile, index }) => {
   };
 
   return (
-    <div className={`card article-card ${index < 2 ? 'large-card' : 'small-card'}`} style={{ backgroundImage: `url(${article.image})` }}>
-      <div className="overlay"></div> {/* Oscurecimiento de fondo */}
+    <div className="card article-card" style={{ backgroundImage: `url(${article.image})` }}>
+      <div className="overlay"></div>
       <div className="content">
         <h2>{article.title}</h2>
         <p>{article.abstract}</p>
@@ -52,7 +53,9 @@ const ArticleCard = ({ article, onDelete, authorProfile, index }) => {
           <span style={{ color: '#888' }}>Read more (Login required)</span>
         )}
         {isAuthenticated && article.author === userProfile.user__id && (
-          <button onClick={handleDelete} className="delete-button">Delete</button>
+          <div className="delete-button-container">
+            <button onClick={handleDelete} className="delete-button">Delete</button>
+          </div>
         )}
         {error && <div style={{ color: 'red', marginTop: '1rem' }}>{error}</div>}
       </div>

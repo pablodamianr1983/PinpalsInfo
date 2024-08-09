@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import api from '../services/api';
 import { useAuth } from '../contexts/AuthContext';
+import './EditArticle.css'; // Importa los estilos personalizados
 
 const EditArticle = () => {
   const { id } = useParams();
@@ -58,9 +59,9 @@ const EditArticle = () => {
 
   return (
     <div className="container">
-      <h1 style={{ color: '#bb86fc' }}>Edit Article</h1>
-      {loading && <p>Loading article...</p>}
-      {error && <p style={{ color: 'red' }}>{error}</p>}
+      <h1>Edit Article</h1>
+      {loading && <p className="loading-message">Loading article...</p>}
+      {error && <p className="error-message">{error}</p>}
       {!loading && !error && (
         <form onSubmit={handleSubmit} className="card">
           <input

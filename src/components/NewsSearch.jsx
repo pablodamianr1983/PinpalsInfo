@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './NewsSearch.css'; // Importa los estilos personalizados
 
 const NewsSearch = ({ categories, onSearch }) => {
   const [query, setQuery] = useState('');

@@ -1,0 +1,33 @@
+/* Estilos para NotFound */
+.not-found-container {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #1e1e1e;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: #fff;
+    text-align: center;
+  }
+  
+  .not-found-container h1 {
+    color: #bb86fc;
+    margin-bottom: 1rem;
+  }
+  
+  .not-found-container p {
+    margin-bottom: 1rem;
+  }
+  
+  .back-home-link {
+    color: #bb86fc;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    margin-top: 1rem;
+  }
+  
+  .back-home-link:hover {
+    text-decoration: underline;
+  }
+  

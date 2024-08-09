@@ -3,6 +3,7 @@ import api from '../services/api';
 import ArticleCard from '../components/ArticleCard';
 import NewsSearch from '../components/NewsSearch';
 import { useAuth } from '../contexts/AuthContext';
+import './Home.css'; // Importa los estilos personalizados
 
 const Home = () => {
   const [articles, setArticles] = useState([]);

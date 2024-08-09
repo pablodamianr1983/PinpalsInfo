@@ -1,0 +1,33 @@
+/* Estilos específicos para CommentForm */
+
+.comment-form {
+  max-width: 500px;
+  width: 100%;
+  margin: 0.5rem auto;
+  display: block;
+}
+
+.comment-form textarea {
+  max-width: 500px;
+  width: 100%;
+  margin: 0.5rem auto;
+  display: block;
+  background-color: #a3a2a8;
+  border: 1px solid #75707c;
+  color: #10011a;
+  padding: 0.5rem;
+  border-radius: 5px;
+  box-sizing: border-box;
+  resize: vertical;
+}
+
+.comment-form button {
+  max-width: 200px;
+  width: auto;
+  margin: 0.5rem auto;
+  display: block;
+}
+
+.comment-form .error {
+  color: red;
+}

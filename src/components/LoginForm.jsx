@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
+import './LoginForm.css';  // Importación del archivo CSS específico
 
 const LoginForm = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const { login, authError, authSuccess } = useAuth(); //auteticacion correcta
+  const { login, authError, authSuccess } = useAuth(); 
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -17,7 +18,7 @@ const LoginForm = () => {
   };
 
   return (
-    <div className="card">
+    <div className="login-form-container">
       <form onSubmit={handleSubmit}>
         <input
           id="username"
@@ -39,8 +40,8 @@ const LoginForm = () => {
         />
         <button type="submit">Login</button>
       </form>
-      {authError && <div style={{ color: 'red' }}>{authError}</div>}
-      {authSuccess && <div style={{ color: 'green' }}>{authSuccess}</div>} {/* Mostrar mensaje de éxito */}
+      {authError && <div className="auth-message" style={{ color: 'red' }}>{authError}</div>}
+      {authSuccess && <div className="auth-message" style={{ color: 'green' }}>{authSuccess}</div>}
     </div>
   );
 };

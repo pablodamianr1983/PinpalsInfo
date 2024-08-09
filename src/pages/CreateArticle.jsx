@@ -4,6 +4,7 @@ import api from '../services/api';
 import { useAuth } from '../contexts/AuthContext';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css'; // Importa los estilos de Quill
+import './CreateArticle.css'; // Importa los estilos personalizados
 
 const CreateArticle = () => {
   const { id } = useParams();
@@ -199,7 +200,7 @@ const CreateArticle = () => {
             </option>
           ))}
         </select>
-        <div>
+        <div className="category-container">
           <input
             id="new-category"
             name="new-category"
@@ -209,11 +210,11 @@ const CreateArticle = () => {
             onChange={(e) => setNewCategory(e.target.value)}
           />
           <button type="button" onClick={handleAddCategory}>Add Category</button>
-          {categoryError && <div style={{ color: 'red' }}>{categoryError}</div>}
+          {categoryError && <div className="error-message">{categoryError}</div>}
         </div>
         <button type="submit">{id ? 'Update' : 'Create'}</button>
       </form>
-      {error && <div style={{ color: 'red' }}>{error}</div>}
+      {error && <div className="error-message">{error}</div>}
     </div>
   );
 };
