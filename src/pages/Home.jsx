@@ -132,10 +132,16 @@ const Home = () => {
   };
 
   return (
-    <div className="container">
-      <NewsSearch categories={categories} onSearch={handleSearch} />
-      {loading && <div>Loading articles...</div>}
-      {error && <div style={{ color: 'red' }}>{error}</div>}
+    <>
+      <div className="search-section">
+        <NewsSearch categories={categories} onSearch={handleSearch} />
+      </div>
+
+      <div className="loading-error-section">
+        {loading && <div>Loading articles...</div>}
+        {error && <div style={{ color: 'red' }}>{error}</div>}
+      </div>
+
       <div className="articles-container">
         {!loading && !error && searchResults.slice(0, 3).map(article => (
           <ArticleCard
@@ -147,6 +153,7 @@ const Home = () => {
           />
         ))}
       </div>
+
       <div className="small-cards-container">
         {!loading && !error && searchResults.slice(3, visibleArticles).map(article => (
           <ArticleCard
@@ -158,12 +165,15 @@ const Home = () => {
           />
         ))}
       </div>
-      {!loading && !error && visibleArticles < searchResults.length && (
-        <button onClick={handleShowMore} className="show-more-button">
-          Show More
-        </button>
-      )}
-    </div>
+
+      <div className="show-more-section">
+        {!loading && !error && visibleArticles < searchResults.length && (
+          <button onClick={handleShowMore} className="show-more-button">
+            Show More
+          </button>
+        )}
+      </div>
+    </>
   );
 };
 
