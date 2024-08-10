@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
-import ThemeColor from './ThemeColor';
+import { useTheme } from '../contexts/ThemeContext';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; // Asegúrate de importar FontAwesomeIcon
+import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons'; // Asegúrate de importar los íconos
 import logo from '../assets/pinpals-logo.png';
 import '../styles/Navbar.css';
 
 const Navbar = () => {
   const { isAuthenticated, logout, userProfile } = useAuth();
+  const { isLightMode, toggleTheme } = useTheme();
   const [isActive, setIsActive] = useState(false);
 
   const toggleBurgerMenu = () => {
@@ -72,7 +75,11 @@ const Navbar = () => {
             </div>
           )}
           <div className="navbar-item">
-            <ThemeColor />
+            <button onClick={toggleTheme} className="button is-warning is-dark">
+              <span className="icon">
+                <FontAwesomeIcon icon={isLightMode ? faMoon : faSun} />
+              </span>
+            </button>
           </div>
         </div>
       </div>
