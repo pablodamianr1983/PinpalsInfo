@@ -1,73 +1,76 @@
-/* Estilo para la tarjeta de búsqueda */
-.search-card {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    background-color: rgba(44, 44, 44, 0.9);
-    padding: 2rem;
-    margin: 2rem auto;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    max-width: 600px;
-    width: 100%;
-  }
-  
-  /* Estilo para el cuadro de texto de búsqueda */
-  .search-card input[type="text"] {
-    width: 100%;
-    padding: 0.75rem;
-    margin-bottom: 1rem;
-    border: 1px solid #bb86fc;
-    border-radius: 5px;
-    background-color: rgba(255, 255, 255, 0.1);
-    color: #ffffff;
-    font-size: 1rem;
-    transition: border-color 0.3s ease;
-  }
-  
-  .search-card input[type="text"]:focus {
-    border-color: #6200ea;
-    outline: none;
-  }
-  
-  /* Estilo para el menú desplegable de categorías */
-  .search-card select {
-    width: 100%;
-    padding: 0.75rem;
-    margin-bottom: 1rem;
-    border: 1px solid #bb86fc;
-    border-radius: 5px;
-    background-color: rgba(255, 255, 255, 0.1);
-    color: #000000;
-    font-size: 1rem;
-    transition: border-color 0.3s ease;
-  }
-  
-  .search-card select:focus {
-    border-color: #6200ea;
-    outline: none;
-  }
-  
-  /* Estilo para el botón de búsqueda */
-  .search-card button[type="submit"] {
-    padding: 0.75rem 1.5rem;
-    border: none;
-    border-radius: 5px;
-    background-color: #6200ea;
-    color: #ffffff;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-  }
-  
-  .search-card button[type="submit"]:hover {
-    background-color: #3700b3;
-    transform: translateY(-2px);
-  }
-  
-  .search-card button[type="submit"]:active {
-    background-color: #03dac5;
-    transform: translateY(0);
-  }
-  
+/* Estilo general del formulario */
+form {
+  max-width: 600px;
+  margin: 2rem auto;
+  background-color: #7e3768; /* Fondo blanco */
+  padding: 2rem;
+  border-radius: 12px; /* Bordes redondeados */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+form:hover {
+  transform: translateY(-5px); /* Efecto de elevación al pasar el cursor */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada en hover */
+}
+
+/* Estilo para la sección de entrada de texto */
+.input-section input[type="text"] {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid #dddddd;
+  border-radius: 6px; /* Bordes ligeramente redondeados */
+  background-color: #f9f9f9; /* Fondo ligeramente gris */
+  color: #333333;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.input-section input[type="text"]:focus {
+  border-color: #6200ea; /* Color del borde al enfocar */
+  background-color: #ffffff;
+  outline: none;
+}
+
+/* Estilo para la sección del menú desplegable */
+.select-section select {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid #dddddd;
+  border-radius: 6px; /* Bordes ligeramente redondeados */
+  background-color: #f9f9f9;
+  color: #333333;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.select-section select:focus {
+  border-color: #6200ea; /* Color del borde al enfocar */
+  background-color: #ffffff;
+  outline: none;
+}
+
+/* Estilo para la sección del botón de búsqueda */
+.button-section button[type="submit"] {
+  width: 100%;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 6px; /* Bordes ligeramente redondeados */
+  background-color: #6200ea;
+  color: #ffffff;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.button-section button[type="submit"]:hover {
+  background-color: #3700b3;
+  transform: translateY(-2px); /* Efecto de elevación al pasar el cursor */
+}
+
+.button-section button[type="submit"]:active {
+  background-color: #03dac5;
+  transform: translateY(0);
+}

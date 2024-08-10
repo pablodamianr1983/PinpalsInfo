@@ -11,14 +11,17 @@ const NewsSearch = ({ categories, onSearch }) => {
   };
 
   return (
-    <div className="search-card">
-      <form onSubmit={handleSearch}>
+    <form onSubmit={handleSearch}>
+      <div className="input-section">
         <input
           type="text"
           placeholder="Search for news by title"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />
+      </div>
+
+      <div className="select-section">
         <select
           value={selectedCategory}
           onChange={(e) => setSelectedCategory(e.target.value)}
@@ -30,9 +33,12 @@ const NewsSearch = ({ categories, onSearch }) => {
             </option>
           ))}
         </select>
+      </div>
+
+      <div className="button-section">
         <button type="submit">Search</button>
-      </form>
-    </div>
+      </div>
+    </form>
   );
 };
 
