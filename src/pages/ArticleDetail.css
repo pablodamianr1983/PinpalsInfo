@@ -1,4 +1,6 @@
-/* ArticleDetail.css */
+.article-title-section {
+  margin-bottom: 1rem;
+}
 
 .article-title {
   position: relative;
@@ -6,7 +8,7 @@
   background-position: center;
   color: #bb86fc;
   padding: 2rem;
-  margin: 1rem 0;
+  margin: 0;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
   text-align: center;
@@ -45,8 +47,8 @@
   margin-right: auto;
 }
 
-.article-content {
-  text-align: left;
+.article-details-section {
+  margin-bottom: 1rem;
 }
 
 .article-details {
@@ -57,6 +59,18 @@
 
 .article-meta {
   color: #bb86fc;
+}
+
+.article-content-section {
+  margin-bottom: 2rem;
+}
+
+.article-content {
+  text-align: left;
+}
+
+.comment-form-section {
+  margin-bottom: 2rem;
 }
 
 .comment-section {
@@ -97,4 +111,9 @@
 .edit-button:hover, .delete-button:hover {
   background-color: #bb86fc;
   color: #ffffff;
+}
+
+.error-message {
+  color: red;
+  margin-bottom: 1rem;
 }

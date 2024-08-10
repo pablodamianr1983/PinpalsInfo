@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import api from '../services/api';
 import { useAuth } from '../contexts/AuthContext';
 import CommentForm from '../components/CommentForm';
-import './ArticleDetail.css';  // Importación del archivo CSS
+import './ArticleDetail.css';
 
 const ArticleDetail = () => {
   const { id } = useParams();
@@ -99,7 +99,7 @@ const ArticleDetail = () => {
   };
 
   const handleEditComplete = (commentId, content) => {
-    setComments(comments.map(comment => 
+    setComments(comments.map(comment =>
       comment.id === commentId ? { ...comment, content } : comment
     ));
     setCommentToEdit(null);
@@ -142,29 +142,41 @@ const ArticleDetail = () => {
 
   return (
     <div className="article-container">
-      <div
-        className="article-title"
-        style={{ backgroundImage: `url(${article.image})` }}
-      >
-        <div className="overlay"></div>
-        <h1>{article.title}</h1>
+      <div className="article-title-section">
+        <div
+          className="article-title"
+          style={{ backgroundImage: `url(${article.image})` }}
+        >
+          <div className="overlay"></div>
+          <h1>{article.title}</h1>
+        </div>
       </div>
-      <div className="article-details">
-        <span className="article-meta">Author: {getAuthorName(article.author)}</span>
-        <span className="article-meta">Created at: {new Date(article.created_at).toLocaleDateString()}</span>
+
+      <div className="article-details-section">
+        <div className="article-details">
+          <span className="article-meta">Author: {getAuthorName(article.author)}</span>
+          <span className="article-meta">Created at: {new Date(article.created_at).toLocaleDateString()}</span>
+        </div>
       </div>
-      <div
-        className="article-content"
-        dangerouslySetInnerHTML={{ __html: article.content }}
-      />
-      {error && <div style={{ color: 'red' }}>{error}</div>}
-      <CommentForm
-        articleId={id}
-        onCommentAdded={handleCommentAdded}
-        commentToEdit={commentToEdit}
-        onEditComplete={handleEditComplete}
-      />
+
+      <div className="article-content-section">
+        <div
+          className="article-content"
+          dangerouslySetInnerHTML={{ __html: article.content }}
+        />
+      </div>
+
+      <div className="comment-form-section">
+        <CommentForm
+          articleId={id}
+          onCommentAdded={handleCommentAdded}
+          commentToEdit={commentToEdit}
+          onEditComplete={handleEditComplete}
+        />
+      </div>
+
       <div className="comment-section">
+        {error && <div className="error-message">{error}</div>}
         {comments.map(comment => (
           <div key={comment.id} className="comment-container">
             <div className="comment-header">
