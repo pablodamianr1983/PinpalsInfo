@@ -1,37 +1,51 @@
-.navbar {
-    background-color: var(--navbar-background-color);
-    transition: background-color 0.5s ease; 
-  }
-  
-  .navbar-brand .logo {
-    max-height: 75px; 
-  }
-  
-  .navbar-item {
-    font-family: "Bebas Neue", sans-serif;
-    font-size: 1.5rem;
-    font-weight: 400;
-    color: var(--navbar-item-color);
-    display: flex;
-    align-items: center; 
-  }
+/* index.css o Navbar.css */
 
- 
-  
-  .navbar-burger {
-    color: var(--navbar-item-color);
-  }
-  
-  .is-active .navbar-menu {
-    display: block;
-  }
-  
-  .button.is-light {
-    background-color: #ffffff;
-    color: #000000;
-  }
-  
-  .icon i {
-    color: var(--icon-color);
-  }
-  
+.dark-theme {
+  --navbar-background-color: #222;
+  --navbar-item-color: #fff;
+  --icon-color: #fff;
+}
+
+.light-theme {
+  --navbar-background-color: #f8f9fa;
+  --navbar-item-color: #000;
+  --icon-color: #000;
+}
+
+
+.navbar {
+  background-color: var(--navbar-background-color);
+  transition: background-color 0.5s ease; 
+}
+
+.navbar-brand .logo {
+  max-height: 75px; 
+}
+
+.navbar-item {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--navbar-item-color);
+  display: flex;
+  align-items: center; 
+}
+
+
+
+.navbar-burger {
+  color: var(--navbar-item-color);
+}
+
+.is-active .navbar-menu {
+  display: block;
+}
+
+.button.is-light {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.icon i {
+  color: var(--icon-color);
+}

@@ -1,25 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
+import ThemeColor from './ThemeColor';
 import logo from '../assets/pinpals-logo.png';
 import '../styles/Navbar.css';
 
 const Navbar = () => {
   const { isAuthenticated, logout, userProfile } = useAuth();
-  const [isLightMode, setIsLightMode] = useState(false);
   const [isActive, setIsActive] = useState(false);
-
-  // Tema oscuro por defecto
-  useEffect(() => {
-    document.documentElement.classList.add('dark-theme');
-  }, []);
-
-  const toggleTheme = () => {
-    document.documentElement.classList.toggle('light-theme');
-    setIsLightMode(!isLightMode);
-  };
 
   const toggleBurgerMenu = () => {
     setIsActive(!isActive);
@@ -84,11 +72,7 @@ const Navbar = () => {
             </div>
           )}
           <div className="navbar-item">
-            <button onClick={toggleTheme} className="button is-warning is-dark">
-              <span className="icon">
-                <FontAwesomeIcon icon={isLightMode ? faMoon : faSun} />
-              </span>
-            </button>
+            <ThemeColor />
           </div>
         </div>
       </div>
