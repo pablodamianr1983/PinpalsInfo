@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import api from '../services/api';
 import ArticleCard from '../components/ArticleCard';
 import NewsSearch from '../components/NewsSearch';
+import ChatBot from '../components/ChatBot';
 import { useAuth } from '../contexts/AuthContext';
 import './Home.css';
 
@@ -173,6 +174,9 @@ const Home = () => {
           </button>
         )}
       </div>
+
+      {/* Agregar el ChatBot */}
+      <ChatBot />
     </>
   );
 };

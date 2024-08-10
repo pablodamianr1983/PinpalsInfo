@@ -1,0 +1,40 @@
+.chat-bot {
+    position: fixed;
+    bottom: 20px;
+    right: 20px; /* Mantiene el chat bot a una distancia adecuada del borde derecho */
+    width: 80px;
+    height: 80px;
+    cursor: pointer;
+    z-index: 1000;
+  }
+  
+  .chat-bot img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 3px solid #000; /* Borde negro para dar un estilo de cómic */
+  }
+  
+  .chat-bot-message {
+    position: absolute;
+    bottom: 100%;
+    left: auto;
+    right: 100%; /* Mueve el cuadro de texto hacia la izquierda de la imagen */
+    transform: translateX(-10px); /* Ajusta la posición horizontal del cuadro de texto */
+    background-color: #ffe600; /* Color de fondo amarillo para estilo cómic */
+    color: #000; /* Texto negro */
+    padding: 8px 12px;
+    border-radius: 5px;
+    white-space: pre-warp; /* Permite que el texto se muestre en más de una línea */
+    max-width: 250px; /* Limita el ancho máximo del cuadro de texto */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border: 2px solid #000; /* Borde negro para dar un estilo de cómic */
+    font-family: 'Comic Sans MS', sans-serif; /* Fuente estilo cómic */
+    box-shadow: 4px 4px 0 #000; /* Sombra con desplazamiento para efecto cómic */
+  }
+  
+  .chat-bot:hover .chat-bot-message {
+    opacity: 1;
+  }
+  
