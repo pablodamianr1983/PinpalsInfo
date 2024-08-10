@@ -42,9 +42,9 @@ const ArticleCard = ({ article, onDelete, authorProfile }) => {
         <p>{article.abstract}</p>
         {isAuthenticated && (
           <>
-            <p><strong>Author:</strong> {authorProfile ? `${authorProfile.first_name} ${authorProfile.last_name}` : 'Unknown'}</p>
-            <p><strong>Created on:</strong> {new Date(article.created_at).toLocaleDateString()}</p>
-            <p><strong>Categories:</strong> {article.categories.join(', ')}</p>
+            <p className="meta-info"><strong>Author:</strong> {authorProfile ? `${authorProfile.first_name} ${authorProfile.last_name}` : 'Unknown'}</p>
+            <p className="meta-info"><strong>Created on:</strong> {new Date(article.created_at).toLocaleDateString()}</p>
+            <p className="meta-info"><strong>Categories:</strong> {article.categories.join(', ')}</p>
           </>
         )}
         {isAuthenticated ? (
