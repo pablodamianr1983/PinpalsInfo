@@ -1,13 +1,18 @@
 import React from 'react';
 import LoginForm from '../components/LoginForm';
-import './Login.css'; // Importa los estilos personalizados
+import './Login.css';
 
 const Login = () => {
   return (
-    <div className="container">
-      <h2>Login</h2>
-      <LoginForm />
-    </div>
+    <>
+      <div className="title-section">
+        <h2>Login</h2>
+      </div>
+      
+      <div className="form-section">
+        <LoginForm />
+      </div>
+    </>
   );
 };
 

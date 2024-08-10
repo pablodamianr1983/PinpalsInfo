@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import api from '../services/api';
 import { useAuth } from '../contexts/AuthContext';
-import './EditArticle.css'; // Importa los estilos personalizados
+import './EditArticle.css';
 
 const EditArticle = () => {
   const { id } = useParams();
@@ -58,34 +58,58 @@ const EditArticle = () => {
   };
 
   return (
-    <div className="container">
-      <h1>Edit Article</h1>
-      {loading && <p className="loading-message">Loading article...</p>}
-      {error && <p className="error-message">{error}</p>}
+    <>
+      <div className="title-section">
+        <h1>Edit Article</h1>
+      </div>
+      
+      {loading && (
+        <div className="loading-section">
+          <p className="loading-message">Loading article...</p>
+        </div>
+      )}
+      
+      {error && (
+        <div className="error-section">
+          <p className="error-message">{error}</p>
+        </div>
+      )}
+      
       {!loading && !error && (
         <form onSubmit={handleSubmit} className="card">
-          <input
-            type="text"
-            placeholder="Title"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            required
-          />
-          <textarea
-            placeholder="Abstract"
-            value={abstract}
-            onChange={(e) => setAbstract(e.target.value)}
-          ></textarea>
-          <textarea
-            placeholder="Content"
-            value={content}
-            onChange={(e) => setContent(e.target.value)}
-            required
-          ></textarea>
-          <button type="submit">Update</button>
+          <div className="input-section">
+            <input
+              type="text"
+              placeholder="Title"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              required
+            />
+          </div>
+          
+          <div className="textarea-section">
+            <textarea
+              placeholder="Abstract"
+              value={abstract}
+              onChange={(e) => setAbstract(e.target.value)}
+            ></textarea>
+          </div>
+          
+          <div className="content-section">
+            <textarea
+              placeholder="Content"
+              value={content}
+              onChange={(e) => setContent(e.target.value)}
+              required
+            ></textarea>
+          </div>
+          
+          <div className="submit-section">
+            <button type="submit">Update</button>
+          </div>
         </form>
       )}
-    </div>
+    </>
   );
 };
 
