@@ -15,6 +15,7 @@ import VideoBackground from './components/VideoBackground';
 import ProtectedRoute from './components/ProtectedRoute';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
+import AboutUs from './pages/AboutUs';  // Importa el componente AboutUs
 
 library.add(fas);
 
@@ -30,6 +31,7 @@ const App = () => (
           <Route path="/articles/:id" element={<ArticleDetail />} />
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/edit-article/:id" element={<EditArticle />} /> {/* Ruta para editar artículos */}
+          <Route path="/about-us" element={<AboutUs />} /> {/* Ruta para Quienes Somos */}
           <Route element={<ProtectedRoute />}>
             <Route path="/create-article" element={<CreateArticle />} />
           </Route>

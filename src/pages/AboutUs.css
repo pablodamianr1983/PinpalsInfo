@@ -1,0 +1,33 @@
+/* Estilos para AboutUs */
+.title-section h1 {
+    font-size: 2.5rem;
+    color: #fff;
+    font-weight: bold;
+  }
+  
+  .highlight-text {
+    font-size: 1.25rem; /* Texto un poco más grande */
+    color: #fff; /* Texto en blanco */
+    font-weight: bold; /* Texto en negrita */
+    margin-bottom: 1rem;
+  }
+  
+  .back-home-link {
+    color: #bb86fc;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    margin-top: 1rem;
+  }
+  
+  .back-home-link:hover {
+    text-decoration: underline;
+  }
+  
+  .message-section {
+    background-color: #1e1e1e;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  

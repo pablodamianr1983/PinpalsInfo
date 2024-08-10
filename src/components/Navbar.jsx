@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { useTheme } from '../contexts/ThemeContext';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; // Asegúrate de importar FontAwesomeIcon
-import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons'; // Asegúrate de importar los íconos
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; 
+import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons'; 
 import logo from '../assets/pinpals-logo.png';
 import '../styles/Navbar.css';
 
@@ -40,7 +40,7 @@ const Navbar = () => {
           <Link to="/" className="navbar-item">
             Home
           </Link>
-          <Link to="/" className="navbar-item">
+          <Link to="/about-us" className="navbar-item"> {/* Corregido el enlace */}
             Quienes Somos
           </Link>
           {isAuthenticated && (
