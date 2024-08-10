@@ -1,24 +1,20 @@
 @import 'bulma/css/bulma.css';
 
-/* Tema oscuro */
-:root {
-  --background-color: rgba(18, 18, 18, 0.7);
-  --text-color: #ffffff;
-  --navbar-background-color: rgba(28, 28, 28, 0.9);
-  --navbar-item-color: #ffffff;
-  --icon-color: #ffffff;
-  --card-background-color: rgba(44, 44, 44, 0.9);
-  --card-text-color: #ffffff;
+
+.dark-theme {
+  --navbar-background-color: #222;
+  --navbar-item-color: #fff;
+  --icon-color: #fff;
+  background-color: #222;
+  color: #fff;
 }
 
-/* Tema claro */
 .light-theme {
-  --background-color: rgba(255, 255, 255, 0.3);
-  --text-color: #aab605;
-  --navbar-background-color: rgba(248, 248, 248, 0.9);
-  --navbar-item-color: #000000;
-  --icon-color: #000000;
-  --card-background-color: rgba(255, 255, 255, 0.9);
-  --card-text-color: #000000;
+  --navbar-background-color: #f8f9fa;
+  --navbar-item-color: #000;
+  --icon-color: #000;
+  background-color: #f8f9fa;
+  color: #000;
 }
+
 

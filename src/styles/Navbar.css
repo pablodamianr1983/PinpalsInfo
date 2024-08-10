@@ -1,17 +1,3 @@
-/* index.css o Navbar.css */
-
-.dark-theme {
-  --navbar-background-color: #222;
-  --navbar-item-color: #fff;
-  --icon-color: #fff;
-}
-
-.light-theme {
-  --navbar-background-color: #f8f9fa;
-  --navbar-item-color: #000;
-  --icon-color: #000;
-}
-
 
 .navbar {
   background-color: var(--navbar-background-color);
@@ -31,8 +17,6 @@
   align-items: center; 
 }
 
-
-
 .navbar-burger {
   color: var(--navbar-item-color);
 }
@@ -48,4 +32,21 @@
 
 .icon i {
   color: var(--icon-color);
+}
+
+
+.dark-theme {
+  --navbar-background-color: #222;
+  --navbar-item-color: #fff;
+  --icon-color: #fff;
+  background-color: #222;
+  color: #fff;
+}
+
+.light-theme {
+  --navbar-background-color: #f8f9fa;
+  --navbar-item-color: #000;
+  --icon-color: #000;
+  background-color: #f8f9fa;
+  color: #000;
 }
