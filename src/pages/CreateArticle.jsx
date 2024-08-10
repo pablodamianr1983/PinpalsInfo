@@ -3,8 +3,8 @@ import { useParams, useNavigate } from 'react-router-dom';
 import api from '../services/api';
 import { useAuth } from '../contexts/AuthContext';
 import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css'; // Importa los estilos de Quill
-import './CreateArticle.css'; // Importa los estilos personalizados
+import 'react-quill/dist/quill.snow.css';
+import './CreateArticle.css';
 
 const CreateArticle = () => {
   const { id } = useParams();
@@ -53,7 +53,7 @@ const CreateArticle = () => {
           setAbstract(article.abstract);
           setContent(article.content);
           setSelectedCategories(article.categories.map(category => category.id));
-          setImage(article.image); // imagen del articulo
+          setImage(article.image);
         } catch (error) {
           console.error('Failed to fetch article:', error);
           setError('Failed to fetch article. Please try again later.');
@@ -124,7 +124,6 @@ const CreateArticle = () => {
 
       let response;
       if (id) {
-        // actualizar articulo
         response = await api.put(`/infosphere/articles/${id}/`, formData, {
           headers: {
             Authorization: `Token ${token}`,
@@ -145,7 +144,6 @@ const CreateArticle = () => {
           });
         }));
 
-        // asigna categoria al articulo
         await Promise.all(selectedCategories.map(async categoryId => {
           await api.post(`/infosphere/articles/${id}/categories/`, { category: categoryId }, {
             headers: {
@@ -154,7 +152,6 @@ const CreateArticle = () => {
           });
         }));
       } else {
-        // nuevo articulo
         response = await api.post('/infosphere/articles/', formData, {
           headers: {
             Authorization: `Token ${token}`,
@@ -164,7 +161,6 @@ const CreateArticle = () => {
 
         const articleId = response.data.id;
 
-        // asigna categoria al articulo nuevo
         await Promise.all(selectedCategories.map(async categoryId => {
           await api.post(`/infosphere/articles/${articleId}/categories/`, { category: categoryId }, {
             headers: {
@@ -182,46 +178,64 @@ const CreateArticle = () => {
   };
 
   return (
-    <div className="container">
-      <h1 style={{ color: '#bb86fc' }}>{id ? 'Edit Article' : 'Create Article'}</h1>
+    <>
+      <div className="title-section">
+        <h1 style={{ color: '#bb86fc' }}>{id ? 'Edit Article' : 'Create Article'}</h1>
+      </div>
+
       <form onSubmit={handleSubmit} className="card">
-        <input
-          id="title"
-          name="title"
-          type="text"
-          placeholder="Title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          required
-        />
-        <textarea
-          id="abstract"
-          name="abstract"
-          placeholder="Abstract"
-          value={abstract}
-          onChange={(e) => setAbstract(e.target.value)}
-        ></textarea>
-        <ReactQuill
-          value={content}
-          onChange={setContent}
-          placeholder="Content"
-          theme="snow"
-          required
-        />
-        <input
-          id="image"
-          name="image"
-          type="file"
-          accept="image/*"
-          onChange={(e) => setImage(e.target.files[0])}
-        />
-        <select multiple id="categories" name="categories" value={selectedCategories} onChange={handleCategoryChange}>
-          {categories.map(category => (
-            <option key={category.id} value={category.id}>
-              {category.name}
-            </option>
-          ))}
-        </select>
+        <div className="input-section">
+          <input
+            id="title"
+            name="title"
+            type="text"
+            placeholder="Title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            required
+          />
+        </div>
+
+        <div className="textarea-section">
+          <textarea
+            id="abstract"
+            name="abstract"
+            placeholder="Abstract"
+            value={abstract}
+            onChange={(e) => setAbstract(e.target.value)}
+          ></textarea>
+        </div>
+
+        <div className="quill-section">
+          <ReactQuill
+            value={content}
+            onChange={setContent}
+            placeholder="Content"
+            theme="snow"
+            required
+          />
+        </div>
+
+        <div className="file-section">
+          <input
+            id="image"
+            name="image"
+            type="file"
+            accept="image/*"
+            onChange={(e) => setImage(e.target.files[0])}
+          />
+        </div>
+
+        <div className="select-section">
+          <select multiple id="categories" name="categories" value={selectedCategories} onChange={handleCategoryChange}>
+            {categories.map(category => (
+              <option key={category.id} value={category.id}>
+                {category.name}
+              </option>
+            ))}
+          </select>
+        </div>
+
         <div className="category-container">
           <input
             id="new-category"
@@ -243,11 +257,17 @@ const CreateArticle = () => {
             Delete Last Category
           </button>
         </div>
-        <button type="submit">{id ? 'Update' : 'Create'}</button>
+
+        <div className="submit-section">
+          <button type="submit">{id ? 'Update' : 'Create'}</button>
+        </div>
       </form>
-      {error && <div className="error-message">{error}</div>}
-      {categoryError && <div className="error-message">{categoryError}</div>}
-    </div>
+
+      <div className="error-section">
+        {error && <div className="error-message">{error}</div>}
+        {categoryError && <div className="error-message">{categoryError}</div>}
+      </div>
+    </>
   );
 };
 
