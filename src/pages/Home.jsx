@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import api from '../services/api';
+import { Helmet } from 'react-helmet-async';
 import ArticleCard from '../components/ArticleCard';
 import NewsSearch from '../components/NewsSearch';
 import ChatBot from '../components/ChatBot';
@@ -134,6 +135,10 @@ const Home = () => {
 
   return (
     <>
+      <Helmet>
+        <title>PinPals</title>
+      </Helmet>
+      <div className="title-section"></div>
       <div className="search-section">
         <NewsSearch categories={categories} onSearch={handleSearch} />
       </div>

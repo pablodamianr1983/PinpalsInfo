@@ -1,10 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import './AboutUs.css';
+
 
 const AboutUs = () => {
   return (
     <>
+
+      <Helmet>
+        <title>Quienes somos | PinPals</title>
+      </Helmet>
       <div className="title-section">
         <h1>¿Quiénes Somos?</h1>
       </div>

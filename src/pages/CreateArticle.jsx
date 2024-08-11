@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async'; // Importa Helmet
 import api from '../services/api';
 import { useAuth } from '../contexts/AuthContext';
 import ReactQuill from 'react-quill';
@@ -179,6 +180,10 @@ const CreateArticle = () => {
 
   return (
     <>
+      <Helmet>
+        <title>{id ? 'Edit Article | PinPals' : 'Crear entrada | PinPals'}</title>
+      </Helmet>
+      
       <div className="title-section">
         <h1 style={{ color: '#bb86fc' }}>{id ? 'Edit Article' : 'Crear noticia'}</h1>
       </div>
@@ -246,7 +251,7 @@ const CreateArticle = () => {
             onChange={(e) => setNewCategory(e.target.value)}
           />
           <button type="button" className="add-category-btn" onClick={handleAddCategory}>
-            Add Category
+            Agregar Categoria
           </button>
           <button
             type="button"
