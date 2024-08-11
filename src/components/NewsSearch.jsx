@@ -15,7 +15,7 @@ const NewsSearch = ({ categories, onSearch }) => {
       <div className="input-section">
         <input
           type="text"
-          placeholder="Search for news by title"
+          placeholder="Buscar noticias por título"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />
@@ -26,7 +26,7 @@ const NewsSearch = ({ categories, onSearch }) => {
           value={selectedCategory}
           onChange={(e) => setSelectedCategory(e.target.value)}
         >
-          <option value="">All Categories</option>
+          <option value="">Todas las categorias</option>
           {Array.isArray(categories) && categories.map((category) => (
             <option key={category.id} value={category.name}>
               {category.name}
@@ -36,7 +36,7 @@ const NewsSearch = ({ categories, onSearch }) => {
       </div>
 
       <div className="button-section">
-        <button type="submit">Search</button>
+        <button type="submit">Buscar</button>
       </div>
     </form>
   );

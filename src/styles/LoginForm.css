@@ -1,0 +1,110 @@
+.login-form-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #FDD835; 
+  color: #000; 
+  background-image: url('../assets/homer.png'); /* Ruta de la imagen */
+  background-position: left center;
+  background-repeat: no-repeat;
+  background-size: 150px; /* Reduce el tamaño de la imagen de Homer */
+}
+
+.login-form-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 1; /* Asegura que el formulario esté encima del fondo */
+}
+
+.login-logo-container {
+  text-align: center;
+  margin-bottom: 0.5rem; /* Reduce el margen inferior para acercar el logo al formulario */
+}
+
+.login-logo {
+  width: 150px; /* Ajusta el tamaño del logo si es necesario */
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 400px; /* Aumenta el ancho máximo del formulario */
+  padding: 2rem; /* Agrega más padding para darle un poco más de espacio interno */
+  background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco semi-transparente */
+  border-radius: 10px; /* Bordes redondeados */
+}
+
+.login-input-container {
+  position: relative;
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+.input-icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #0077B6;
+}
+
+.login-input-container input {
+  width: 100%;
+  padding: 0.75rem 0.75rem 0.75rem 2.5rem; /* Deja espacio para el icono */
+  font-size: 1rem;
+  border: 2px solid #0077B6;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #000;
+}
+
+.login-checkbox-container {
+  margin-bottom: 1rem;
+  width: 100%;
+  text-align: left;
+}
+
+.login-checkbox-container label {
+  font-size: 0.875rem;
+  display: flex;
+  align-items: center;
+}
+
+.login-checkbox-container input {
+  margin-right: 0.5rem;
+}
+
+.login-button-container {
+  width: 100%;
+}
+
+.login-button-container button {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #2f64d6;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.login-button-container button:hover {
+  background-color: #ffb300;
+  color: #000;
+}
+
+.auth-message-container {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.auth-message {
+  font-size: 0.875rem;
+}

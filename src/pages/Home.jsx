@@ -27,7 +27,7 @@ const Home = () => {
         let hasMore = true;
         let page = 1;
 
-        // Fetch all articles
+        // Fetch todas los articulos
         while (hasMore) {
           const response = await api.get('/infosphere/articles/', {
             params: { page, page_size: 100 },
@@ -37,7 +37,7 @@ const Home = () => {
           page += 1;
         }
 
-        // Fetch all article categories
+        // Fetch todas las categorias
         page = 1;
         hasMore = true;
         while (hasMore) {
@@ -175,7 +175,7 @@ const Home = () => {
         )}
       </div>
 
-      {/* Agregar el ChatBot */}
+      {/* agregar ChatBot */}
       <ChatBot />
     </>
   );

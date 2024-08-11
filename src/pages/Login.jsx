@@ -6,7 +6,7 @@ const Login = () => {
   return (
     <>
       <div className="title-section">
-        <h2>Login</h2>
+        <h2></h2>
       </div>
       
       <div className="form-section">
