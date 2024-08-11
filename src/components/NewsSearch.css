@@ -1,45 +1,42 @@
-/* Estilo general del formulario */
 form {
   max-width: 600px;
   margin: 2rem auto;
-  background-color: #7e3768; /* Fondo blanco */
+  background-color: #7e3768;
   padding: 2rem;
-  border-radius: 12px; /* Bordes redondeados */
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 form:hover {
-  transform: translateY(-5px); /* Efecto de elevación al pasar el cursor */
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada en hover */
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-/* Estilo para la sección de entrada de texto */
 .input-section input[type="text"] {
   width: 100%;
   padding: 0.75rem;
   margin-bottom: 1rem;
   border: 1px solid #dddddd;
-  border-radius: 6px; /* Bordes ligeramente redondeados */
-  background-color: #f9f9f9; /* Fondo ligeramente gris */
+  border-radius: 6px;
+  background-color: #f9f9f9;
   color: #333333;
   font-size: 1rem;
   transition: border-color 0.3s ease, background-color 0.3s ease;
 }
 
 .input-section input[type="text"]:focus {
-  border-color: #6200ea; /* Color del borde al enfocar */
+  border-color: #6200ea;
   background-color: #ffffff;
   outline: none;
 }
 
-/* Estilo para la sección del menú desplegable */
 .select-section select {
   width: 100%;
   padding: 0.75rem;
   margin-bottom: 1rem;
   border: 1px solid #dddddd;
-  border-radius: 6px; /* Bordes ligeramente redondeados */
+  border-radius: 6px;
   background-color: #f9f9f9;
   color: #333333;
   font-size: 1rem;
@@ -47,17 +44,16 @@ form:hover {
 }
 
 .select-section select:focus {
-  border-color: #6200ea; /* Color del borde al enfocar */
+  border-color: #6200ea;
   background-color: #ffffff;
   outline: none;
 }
 
-/* Estilo para la sección del botón de búsqueda */
 .button-section button[type="submit"] {
   width: 100%;
   padding: 0.75rem;
   border: none;
-  border-radius: 6px; /* Bordes ligeramente redondeados */
+  border-radius: 6px;
   background-color: #6200ea;
   color: #ffffff;
   font-size: 1rem;
@@ -67,7 +63,7 @@ form:hover {
 
 .button-section button[type="submit"]:hover {
   background-color: #3700b3;
-  transform: translateY(-2px); /* Efecto de elevación al pasar el cursor */
+  transform: translateY(-2px);
 }
 
 .button-section button[type="submit"]:active {

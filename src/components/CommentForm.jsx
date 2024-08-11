@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import api from '../services/api';
 import { useAuth } from '../contexts/AuthContext';
-import './CommentForm.css';  // Importación del archivo CSS específico
+import './CommentForm.css';
 
 const CommentForm = ({ articleId, onCommentAdded, commentToEdit, onEditComplete }) => {
   const [content, setContent] = useState(commentToEdit ? commentToEdit.content : '');
@@ -19,7 +19,6 @@ const CommentForm = ({ articleId, onCommentAdded, commentToEdit, onEditComplete 
     setError('');
     try {
       if (commentToEdit) {
-        // editar comentario
         await api.patch(`/infosphere/comments/${commentToEdit.id}/`, { content }, {
           headers: {
             Authorization: `Token ${token}`,
@@ -27,7 +26,6 @@ const CommentForm = ({ articleId, onCommentAdded, commentToEdit, onEditComplete 
         });
         onEditComplete(commentToEdit.id, content);
       } else {
-        // agregar comentario
         const response = await api.post('/infosphere/comments/', { content, article: articleId }, {
           headers: {
             Authorization: `Token ${token}`,
@@ -38,7 +36,7 @@ const CommentForm = ({ articleId, onCommentAdded, commentToEdit, onEditComplete 
           author: userProfile.user__id,
           first_name: userProfile.first_name,
           last_name: userProfile.last_name,
-          image: userProfile.image, // imagen de perfil del usuario
+          image: userProfile.image,
         });
       }
       setContent('');

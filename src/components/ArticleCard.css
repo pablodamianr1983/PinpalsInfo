@@ -1,23 +1,15 @@
 .article-card {
   position: relative;
-  background-color: #ffffff; /* Fondo blanco para un aspecto limpio */
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-  border-radius: 10px; /* Bordes sutilmente redondeados */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra ligera para profundidad */
-  padding: 1.5rem;
-  margin: 1rem 0;
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
+  border-radius: 12px;
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(5px);
 }
 
 .article-card:hover {
-  transform: translateY(-5px); /* Efecto de elevación sutil */
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada en hover */
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .article-card .overlay {
@@ -26,85 +18,57 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.2); /* Superposición semitransparente oscura */
-  z-index: 1;
-  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.5);
 }
 
 .article-card .content {
   position: relative;
   z-index: 2;
-  color: #333333; /* Texto en gris oscuro */
-  font-weight: 500; /* Peso de fuente medio */
+  padding: 20px;
+  color: white;
 }
 
 .article-card .content h2 {
-  margin-top: 0;
-  color: #1a1a1a; /* Título en gris oscuro casi negro */
-  font-weight: 600; /* Título ligeramente más pesado */
-  font-size: 1.75rem; /* Tamaño de fuente más grande */
-}
-
-.article-card .content .meta-info {
-  color: #666666; /* Meta información en gris más claro */
-  font-size: 0.9rem;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: white !important;
 }
 
 .article-card p {
-  margin-top: 0.5rem;
-  color: #444444; /* Texto del abstracto en gris medio */
-  line-height: 1.6; /* Espaciado de línea más cómodo */
+  font-size: 1rem;
+  margin-bottom: 10px;
+  color: white;
 }
 
-.link-section {
-  margin-top: 1rem;
+.article-card .meta-info {
+  font-size: 0.875rem;
+  color: white;
+  margin-bottom: 8px;
 }
 
-.link-section a {
-  color: #0066cc; /* Enlace en azul sobrio */
-  text-decoration: none;
-  font-weight: 600;
-  transition: color 0.3s ease;
-}
-
-.link-section a:hover {
-  color: #004999; /* Enlace más oscuro en hover */
+.article-card .meta-info strong {
+  color: white;
 }
 
 .delete-button-container {
-  display: flex;
-  justify-content: flex-end; /* Botón alineado a la derecha */
   margin-top: 1rem;
 }
 
-.article-card .delete-button {
-  background-color: #ff4c4c; /* Botón de eliminar en rojo sobrio */
+.delete-button {
+  background-color: #ff4b5c;
   border: none;
-  color: #ffffff; /* Texto blanco */
-  padding: 0.5rem 1rem;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 8px;
   cursor: pointer;
-  border-radius: 5px;
-  font-weight: 500;
-  transition: background-color 0.3s ease;
 }
 
-.article-card .delete-button:hover {
-  background-color: #cc0000; /* Rojo más oscuro en hover */
+.delete-button:hover {
+  background-color: #ff3339;
 }
 
-@media (max-width: 1200px) {
+@media screen and (max-width: 768px) {
   .article-card {
-    max-width: 90%;
-  }
-}
-
-@media (max-width: 768px) {
-  .article-card {
-    max-width: 100%;
-    padding: 1rem;
-  }
-
-  .article-card .content h2 {
-    font-size: 1.5rem;
+    margin-bottom: 20px;
   }
 }

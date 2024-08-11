@@ -10,7 +10,7 @@ const Home = () => {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
-  const [visibleArticles, setVisibleArticles] = useState(3);
+  const [visibleArticles, setVisibleArticles] = useState(4); // Mostrar 4 artículos inicialmente
   const [searchResults, setSearchResults] = useState([]);
   const [categories, setCategories] = useState([]);
   const [userProfiles, setUserProfiles] = useState({});
@@ -27,7 +27,7 @@ const Home = () => {
         let hasMore = true;
         let page = 1;
 
-        // Fetch todas los articulos
+        // Fetch todos los artículos
         while (hasMore) {
           const response = await api.get('/infosphere/articles/', {
             params: { page, page_size: 100 },
@@ -37,7 +37,7 @@ const Home = () => {
           page += 1;
         }
 
-        // Fetch todas las categorias
+        // Fetch todas las categorías
         page = 1;
         hasMore = true;
         while (hasMore) {
@@ -111,7 +111,7 @@ const Home = () => {
   };
 
   const handleShowMore = () => {
-    setVisibleArticles(prevVisibleArticles => prevVisibleArticles + 3);
+    setVisibleArticles(prevVisibleArticles => prevVisibleArticles + 4); // Mostrar 4 más cada vez
   };
 
   const handleSearch = (query, selectedCategory) => {
@@ -144,25 +144,13 @@ const Home = () => {
       </div>
 
       <div className="articles-container">
-        {!loading && !error && searchResults.slice(0, 3).map(article => (
+        {!loading && !error && searchResults.slice(0, visibleArticles).map(article => (
           <ArticleCard
             key={article.id}
             article={article}
             onDelete={handleDeleteArticle}
             authorProfile={userProfiles[article.author]}
             className="article-card"
-          />
-        ))}
-      </div>
-
-      <div className="small-cards-container">
-        {!loading && !error && searchResults.slice(3, visibleArticles).map(article => (
-          <ArticleCard
-            key={article.id}
-            article={article}
-            onDelete={handleDeleteArticle}
-            authorProfile={userProfiles[article.author]}
-            className="article-card small-card"
           />
         ))}
       </div>

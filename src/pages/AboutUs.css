@@ -1,33 +1,51 @@
 /* Estilos para AboutUs */
+
 .title-section h1 {
-    font-size: 2.5rem;
-    color: #fff;
-    font-weight: bold;
-  }
-  
-  .highlight-text {
-    font-size: 1.25rem; /* Texto un poco más grande */
-    color: #fff; /* Texto en blanco */
-    font-weight: bold; /* Texto en negrita */
-    margin-bottom: 1rem;
-  }
-  
-  .back-home-link {
-    color: #bb86fc;
-    text-decoration: none;
-    font-weight: bold;
-    display: inline-block;
-    margin-top: 1rem;
-  }
-  
-  .back-home-link:hover {
-    text-decoration: underline;
-  }
-  
-  .message-section {
-    background-color: #1e1e1e;
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
+  font-size: 2.5rem;
+  color: #FFD90F; /* Amarillo Simpsons */
+  font-weight: bold;
+  text-shadow: 2px 2px 0px #000, 4px 4px 0px #000; /* Sombras múltiples para un efecto de cómic */
+  font-family: 'Comic Sans MS', 'Chalkboard SE', sans-serif; /* Fuente estilo cómic */
+}
+
+.highlight-text {
+  font-size: 1.25rem; 
+  color: #00A1E9; /* Azul brillante */
+  font-weight: bold; 
+  margin-bottom: 1rem;
+  text-shadow: 1px 1px 0px #000;
+  font-family: 'Comic Sans MS', 'Chalkboard SE', sans-serif;
+}
+
+.link-section {
+  text-align: center; /* Centra el contenido dentro del contenedor */
+  margin-top: 2rem;
+}
+
+.back-home-link {
+  color: #E74C3C; /* Rojo brillante */
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+  font-family: 'Comic Sans MS', 'Chalkboard SE', sans-serif;
+  border: 2px solid #000; /* Borde grueso estilo cómic */
+  padding: 0.5rem 1rem;
+  background-color: #FFD90F; /* Fondo amarillo Simpsons */
+  border-radius: 5px;
+  transition: transform 0.2s ease;
+}
+
+.back-home-link:hover {
+  text-decoration: underline;
+  transform: scale(1.1); /* Efecto de agrandamiento */
+}
+
+.message-section {
+  background-color: #1e1e1e;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada */
+  border: 3px solid #FFD90F; /* Borde amarillo estilo cómic */
+  font-family: 'Comic Sans MS', 'Chalkboard SE', sans-serif;
+  color: #fff;
+}

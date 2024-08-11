@@ -180,7 +180,7 @@ const CreateArticle = () => {
   return (
     <>
       <div className="title-section">
-        <h1 style={{ color: '#bb86fc' }}>{id ? 'Edit Article' : 'Create Article'}</h1>
+        <h1 style={{ color: '#bb86fc' }}>{id ? 'Edit Article' : 'Crear noticia'}</h1>
       </div>
 
       <form onSubmit={handleSubmit} className="card">
