@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css'; // Estilos del editor
 import api from '../services/api';
 import { useAuth } from '../contexts/AuthContext';
 import './EditArticle.css';
@@ -80,7 +82,7 @@ const EditArticle = () => {
           <div className="input-section">
             <input
               type="text"
-              placeholder="Title"
+              placeholder="Titulo"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               required
@@ -89,23 +91,24 @@ const EditArticle = () => {
           
           <div className="textarea-section">
             <textarea
-              placeholder="Abstract"
+              placeholder="Resumen"
               value={abstract}
               onChange={(e) => setAbstract(e.target.value)}
             ></textarea>
           </div>
           
           <div className="content-section">
-            <textarea
-              placeholder="Content"
+            <ReactQuill
               value={content}
-              onChange={(e) => setContent(e.target.value)}
+              onChange={setContent}
+              placeholder="Contenido"
+              theme="snow"
               required
-            ></textarea>
+            />
           </div>
           
           <div className="submit-section">
-            <button type="submit">Actualizado</button>
+            <button type="submit">Actualizar</button>
           </div>
         </form>
       )}
