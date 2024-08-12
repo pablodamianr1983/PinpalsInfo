@@ -58,11 +58,11 @@ const ArticleCard = ({ article, onDelete, authorProfile }) => {
         {isAuthenticated ? (
           <Link to={`/articles/${article.id}`} style={{ color: '#f8db27' }}>Leer más</Link>
         ) : (
-          <span style={{ color: '#888' }}>Leer más (Login required)</span>
+          <span style={{ color: '#f8db27' }}>Iniciar sesión para leer</span>
         )}
         {isAuthenticated && article.author === userProfile.user__id && (
           <div className="delete-button-container">
-            <button onClick={handleDelete} className="delete-button">Delete</button>
+            <button onClick={handleDelete} className="delete-button">Eliminar</button>
           </div>
         )}
         {error && <div style={{ color: 'red', marginTop: '1rem' }}>{error}</div>}
