@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import api from '../services/api';
 import { useAuth } from '../contexts/AuthContext';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser, faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
 import CommentForm from '../components/CommentForm';
 import './ArticleDetail.css';
 
@@ -138,7 +140,7 @@ const ArticleDetail = () => {
     return `https://sandbox.academiadevelopers.com${path}`;
   };
 
-  if (!article) return <div>Loading...</div>;
+  if (!article) return <div>Cargando...</div>;
 
   return (
     <div className="article-container">
@@ -154,8 +156,12 @@ const ArticleDetail = () => {
 
       <div className="article-details-section">
         <div className="article-details">
-          <span className="article-meta">Author: {getAuthorName(article.author)}</span>
-          <span className="article-meta">Created at: {new Date(article.created_at).toLocaleDateString()}</span>
+          <span className="article-meta">
+            <FontAwesomeIcon icon={faUser} /> {getAuthorName(article.author)}
+          </span>
+          <span className="article-meta">
+            <FontAwesomeIcon icon={faCalendarAlt} /> {new Date(article.created_at).toLocaleDateString()}
+          </span>
         </div>
       </div>
 
@@ -192,13 +198,14 @@ const ArticleDetail = () => {
               <p><strong>Reaction:</strong> {comment.reaction}</p>
             )}
             {comment.author === userProfile.user__id && (
-              <>
-                <button onClick={() => handleEditComment(comment)} className="edit-button">Editar</button>
-                <button onClick={() => handleDeleteComment(comment.id)} className="delete-button">Eliminar</button>
-              </>
+              <div className="buttons">
+                <button onClick={() => handleEditComment(comment)} className="button is-success is-dark">Editar</button>
+                <button onClick={() => handleDeleteComment(comment.id)} className="button is-danger is-dark">Eliminar</button>
+              </div>
             )}
           </div>
         ))}
+        
       </div>
     </div>
   );

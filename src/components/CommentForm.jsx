@@ -59,7 +59,9 @@ const CommentForm = ({ articleId, onCommentAdded, commentToEdit, onEditComplete 
         onChange={(e) => setContent(e.target.value)}
         required
       ></textarea>
-      <button type="submit">{commentToEdit ? 'Update Comment' : 'Comment'}</button>
+      <button type="submit" className="button is-link is-dark">
+        {commentToEdit ? 'Update Comment' : 'Comentar'}
+      </button>
       {error && <div className="error">{error}</div>}
     </form>
   );

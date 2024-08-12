@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async'; // Importa Helmet
+import { Helmet } from 'react-helmet-async'; 
 import api from '../services/api';
 import { useAuth } from '../contexts/AuthContext';
 import ReactQuill from 'react-quill';
@@ -194,7 +194,7 @@ const CreateArticle = () => {
             id="title"
             name="title"
             type="text"
-            placeholder="Title"
+            placeholder="Titulo"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             required
@@ -205,7 +205,7 @@ const CreateArticle = () => {
           <textarea
             id="abstract"
             name="abstract"
-            placeholder="Abstract"
+            placeholder="Resumen"
             value={abstract}
             onChange={(e) => setAbstract(e.target.value)}
           ></textarea>
@@ -215,7 +215,7 @@ const CreateArticle = () => {
           <ReactQuill
             value={content}
             onChange={setContent}
-            placeholder="Content"
+            placeholder="Contenido"
             theme="snow"
             required
           />
@@ -259,12 +259,12 @@ const CreateArticle = () => {
             onClick={() => handleDeleteCategory(selectedCategories[selectedCategories.length - 1])}
             disabled={selectedCategories.length === 0}
           >
-            Delete Last Category
+            Borrar última categoría
           </button>
         </div>
 
         <div className="submit-section">
-          <button type="submit">{id ? 'Update' : 'Create'}</button>
+          <button type="submit">{id ? 'Update' : 'Crear'}</button>
         </div>
       </form>
 

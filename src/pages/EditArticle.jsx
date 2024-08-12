@@ -60,12 +60,12 @@ const EditArticle = () => {
   return (
     <>
       <div className="title-section">
-        <h1>Edit Article</h1>
+        <h1>Editar Entrada</h1>
       </div>
       
       {loading && (
         <div className="loading-section">
-          <p className="loading-message">Loading article...</p>
+          <p className="loading-message">Cargando Entrada...</p>
         </div>
       )}
       
@@ -105,7 +105,7 @@ const EditArticle = () => {
           </div>
           
           <div className="submit-section">
-            <button type="submit">Update</button>
+            <button type="submit">Actualizado</button>
           </div>
         </form>
       )}

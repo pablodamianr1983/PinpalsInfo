@@ -3,6 +3,7 @@
 }
 
 .article-title {
+  font-family: "Bebas Neue", sans-serif;
   position: relative;
   background-size: cover;
   background-position: center;
@@ -66,6 +67,7 @@
 }
 
 .article-content {
+  color: #e0e0e0;
   text-align: left;
 }
 
@@ -85,53 +87,49 @@
   color: #e0e0e0;
 }
 
-.comment-header {
-  display: flex;
-  align-items: center;
-  margin-bottom: 0.5rem;
-}
-
-.comment-header img {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  margin-right: 1rem;
-}
-
-
-.error-message {
-  color: red;
-  margin-bottom: 1rem;
-}
-
 .comment-header p strong {
-  color: #FFD700; 
+  color: #FFD700 !important; 
 }
 
-.edit-button {
-  background-color: #4CAF50; 
+.comment-container .edit-button {
+  background-color: #4CAF50 !important; 
   border: none;
-  color: #ffffff;
-  padding: 0.5rem;
+  color: #ffffff !important;
+  padding: 0.25rem 0.75rem; 
   border-radius: 5px;
   cursor: pointer;
-  margin-right: 0.5rem;
+  font-size: 0.875rem;
+  display: inline-block; 
 }
 
-.edit-button:hover {
-  background-color: #45a049; 
+.comment-container .edit-button:hover {
+  background-color: #45a049 !important; 
 }
 
-.delete-button {
-  background-color: #f44336; 
+.comment-container .delete-button {
+  background-color: #f44336 !important; 
   border: none;
-  color: #ffffff;
-  padding: 0.5rem;
+  color: #ffffff !important;
+  padding: 0.25rem 0.75rem; 
   border-radius: 5px;
   cursor: pointer;
-  margin-right: 0.5rem;
+  font-size: 0.875rem;
+  display: inline-block; 
 }
 
-.delete-button:hover {
-  background-color: #d32f2f; 
+.comment-container .delete-button:hover {
+  background-color: #d32f2f !important; 
+}
+
+.comment-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.comment-container .buttons {
+  display: flex;
+  flex-direction: row; 
+  gap: 0.5rem; 
+  margin-top: 0.5rem; 
 }
