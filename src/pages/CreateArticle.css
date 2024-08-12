@@ -21,7 +21,7 @@
 
 .article-title .overlay {
   position: absolute;
-  top: 0; /* Cambié la coma por un punto y coma */
+  top: 0; 
   left: 0;
   width: 100%;
   height: 100%;
@@ -100,7 +100,7 @@
 }
 
 .comment-header p strong {
-  color: #ffffff; /* Cambia el color del nombre del autor a blanco */
+  color: #ffffff; 
 }
 
 .edit-button, .delete-button {
