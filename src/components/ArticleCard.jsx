@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import api from '../services/api';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser, faCalendarAlt, faTags } from '@fortawesome/free-solid-svg-icons';
 import './ArticleCard.css';
 
 const ArticleCard = ({ article, onDelete, authorProfile }) => {
@@ -42,15 +44,21 @@ const ArticleCard = ({ article, onDelete, authorProfile }) => {
         <p>{article.abstract}</p>
         {isAuthenticated && (
           <>
-            <p className="meta-info"><strong>Author:</strong> {authorProfile ? `${authorProfile.first_name} ${authorProfile.last_name}` : 'Unknown'}</p>
-            <p className="meta-info"><strong>Created on:</strong> {new Date(article.created_at).toLocaleDateString()}</p>
-            <p className="meta-info"><strong>Categories:</strong> {article.categories.join(', ')}</p>
+            <p className="meta-info">
+              <FontAwesomeIcon icon={faUser} /> {authorProfile ? `${authorProfile.first_name} ${authorProfile.last_name}` : 'Unknown'}
+            </p>
+            <p className="meta-info">
+              <FontAwesomeIcon icon={faCalendarAlt} /> {new Date(article.created_at).toLocaleDateString()}
+            </p>
+            <p className="meta-info">
+              <FontAwesomeIcon icon={faTags} /> {article.categories.join(', ')}
+            </p>
           </>
         )}
         {isAuthenticated ? (
-          <Link to={`/articles/${article.id}`} style={{ color: '#bb86fc' }}>Read more</Link>
+          <Link to={`/articles/${article.id}`} style={{ color: '#f8db27' }}>Leer más</Link>
         ) : (
-          <span style={{ color: '#888' }}>Read more (Login required)</span>
+          <span style={{ color: '#888' }}>Leer más (Login required)</span>
         )}
         {isAuthenticated && article.author === userProfile.user__id && (
           <div className="delete-button-container">
