@@ -96,8 +96,28 @@ const ArticleDetail = () => {
     fetchComments();
   }, [id, token]);
 
-  const handleCommentAdded = (comment) => {
-    setComments([...comments, comment]);
+  const handleCommentAdded = async (comment) => {
+    try {
+      // Agrega el comentario al estado actual
+      setComments([...comments, comment]);
+
+      // Actualiza el perfil del usuario que acaba de comentar
+      const userId = comment.author;
+      const response = await api.get(`/users/profiles/${userId}/`, {
+        headers: {
+          Authorization: `Token ${token}`,
+        },
+      });
+
+      setUserProfiles(prevProfiles => ({
+        ...prevProfiles,
+        [response.data.user__id]: response.data,
+      }));
+
+    } catch (err) {
+      console.error('Error updating comments or fetching user profile:', err);
+      setError('Failed to refresh comments and profiles. Please try again later.');
+    }
   };
 
   const handleEditComplete = (commentId, content) => {
@@ -156,8 +176,17 @@ const ArticleDetail = () => {
 
       <div className="article-details-section">
         <div className="article-details">
-          <span className="article-meta">
-            <FontAwesomeIcon icon={faUser} /> {getAuthorName(article.author)}
+          <span className="article-meta author-info">
+            {getAuthorImage(article.author) && (
+              <img
+                src={getImageUrl(getAuthorImage(article.author))}
+                alt="Author"
+                className="author-image"
+              />
+            )}
+            <span className="author-name">
+              <FontAwesomeIcon icon={faUser} /> {getAuthorName(article.author)}
+            </span>
           </span>
           <span className="article-meta">
             <FontAwesomeIcon icon={faCalendarAlt} /> {new Date(article.created_at).toLocaleDateString()}
