@@ -6,6 +6,7 @@ import NewsSearch from '../components/NewsSearch';
 import ChatBot from '../components/ChatBot';
 import { useAuth } from '../contexts/AuthContext';
 import './Home.css';
+import roscaImage from '../rosca.png'; // Importar la imagen
 
 const Home = () => {
   const [articles, setArticles] = useState([]);
@@ -140,7 +141,10 @@ const Home = () => {
       </Helmet>
 
       <div className="home-container">
-        <div className="title-section"></div>
+        <div className="title-section">
+          <img src={roscaImage} alt="Rosca" className="app-logo" />
+          <h1 className="app-title">PinPals News</h1>
+        </div>
         <div className="search-section">
           <NewsSearch categories={categories} onSearch={handleSearch} />
         </div>
