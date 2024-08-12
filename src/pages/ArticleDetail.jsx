@@ -193,8 +193,8 @@ const ArticleDetail = () => {
             )}
             {comment.author === userProfile.user__id && (
               <>
-                <button onClick={() => handleEditComment(comment)} className="edit-button">Edit</button>
-                <button onClick={() => handleDeleteComment(comment.id)} className="delete-button">Delete</button>
+                <button onClick={() => handleEditComment(comment)} className="edit-button">Editar</button>
+                <button onClick={() => handleDeleteComment(comment.id)} className="delete-button">Eliminar</button>
               </>
             )}
           </div>
