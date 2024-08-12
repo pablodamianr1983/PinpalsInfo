@@ -9,6 +9,14 @@ const NewsSearch = ({ categories, onSearch }) => {
 
   const handleSearch = (e) => {
     e.preventDefault();
+    
+    // Si ambos campos están vacíos, no se permite la búsqueda.
+    if (query.trim() === '' && selectedCategory === '') {
+      alert('Por favor, completa al menos uno de los campos: búsqueda o categoría.');
+      return;
+    }
+    
+    // Ejecuta la búsqueda con los valores proporcionados
     onSearch(query, selectedCategory);
   };
 
@@ -23,7 +31,6 @@ const NewsSearch = ({ categories, onSearch }) => {
               placeholder="Buscar entradas"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              required
             />
             <span className="icon is-small is-left">
               <FontAwesomeIcon icon={faSearch} />
