@@ -1,10 +1,12 @@
 
 .title-section h1 {
-  font-size: 2.5rem;
+  font-size: 3rem;
   color: #FFD90F; 
   font-weight: bold;
   text-shadow: 2px 2px 0px #000, 4px 4px 0px #000; 
-  font-family: 'Comic Sans MS', 'Chalkboard SE', sans-serif; 
+  font-family: "Bebas Neue", sans-serif;
+  letter-spacing: 0.06em;
+  margin: 2%;
 }
 
 .highlight-text {
@@ -19,29 +21,14 @@
 .link-section {
   text-align: center; 
   margin-top: 2rem;
+  margin: 4%;
 }
 
-.back-home-link {
-  color: #E74C3C; 
-  text-decoration: none;
-  font-weight: bold;
-  display: inline-block;
-  font-family: 'Comic Sans MS', 'Chalkboard SE', sans-serif;
-  border: 2px solid #000; 
-  padding: 0.5rem 1rem;
-  background-color: #FFD90F; 
-  border-radius: 5px;
-  transition: transform 0.2s ease;
-}
-
-.back-home-link:hover {
-  text-decoration: underline;
-  transform: scale(1.1); 
-}
 
 .message-section {
   background-color: #1e1e1e;
   padding: 2rem;
+  margin: 5%;
   border-radius: 10px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada */
   border: 3px solid #FFD90F; /* Borde amarillo estilo cómic */
