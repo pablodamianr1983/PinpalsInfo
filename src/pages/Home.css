@@ -1,5 +1,25 @@
 .home-container {
-  margin: 30px; /* Margen general alrededor del contenido */
+  margin: 30px; 
+}
+
+.title-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.app-logo {
+  width: 100px;
+  height: 100px;
+  margin-right: 0px; 
+}
+
+.app-title {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 2.5rem;
+  color: #2f64d6;
+  text-align: center;
 }
 
 .articles-container {
@@ -10,13 +30,13 @@
 }
 
 .article-card {
-  flex: 1 1 calc(50% - 2rem); /* Dos tarjetas por fila */
+  flex: 1 1 calc(50% - 2rem); 
   max-width: calc(50% - 2rem);
 }
 
 @media (max-width: 768px) {
   .article-card {
-    flex: 1 1 100%; /* Una tarjeta por fila en pantallas pequeñas */
+    flex: 1 1 100%; 
     max-width: 100%;
   }
 }
