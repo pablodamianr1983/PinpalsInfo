@@ -1,4 +1,6 @@
-/* Estilos generales para el Home */
+.home-container {
+  margin: 30px; /* Margen general alrededor del contenido */
+}
 
 .articles-container {
   display: flex;
@@ -30,7 +32,7 @@
   font-size: 1.5rem;
   font-weight: 400;
   display: block;
-  background-color: 	#2f64d6;
+  background-color: #2f64d6;
   color: white;
   border: none;
   padding: 0.75rem 1.5rem;

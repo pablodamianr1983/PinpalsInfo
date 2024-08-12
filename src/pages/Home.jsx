@@ -138,38 +138,41 @@ const Home = () => {
       <Helmet>
         <title>PinPals Info</title>
       </Helmet>
-      <div className="title-section"></div>
-      <div className="search-section">
-        <NewsSearch categories={categories} onSearch={handleSearch} />
-      </div>
 
-      <div className="loading-error-section">
-        {loading && <div>Cargando entradas...</div>}
-        {error && <div style={{ color: 'red' }}>{error}</div>}
-      </div>
+      <div className="home-container">
+        <div className="title-section"></div>
+        <div className="search-section">
+          <NewsSearch categories={categories} onSearch={handleSearch} />
+        </div>
 
-      <div className="articles-container">
-        {!loading && !error && searchResults.slice(0, visibleArticles).map(article => (
-          <ArticleCard
-            key={article.id}
-            article={article}
-            onDelete={handleDeleteArticle}
-            authorProfile={userProfiles[article.author]}
-            className="article-card"
-          />
-        ))}
-      </div>
+        <div className="loading-error-section">
+          {loading && <div>Cargando entradas...</div>}
+          {error && <div style={{ color: 'red' }}>{error}</div>}
+        </div>
 
-      <div className="show-more-section">
-        {!loading && !error && visibleArticles < searchResults.length && (
-          <button onClick={handleShowMore} className="show-more-button">
-            Ver más
-          </button>
-        )}
-      </div>
+        <div className="articles-container">
+          {!loading && !error && searchResults.slice(0, visibleArticles).map(article => (
+            <ArticleCard
+              key={article.id}
+              article={article}
+              onDelete={handleDeleteArticle}
+              authorProfile={userProfiles[article.author]}
+              className="article-card"
+            />
+          ))}
+        </div>
 
-      {/* agregar ChatBot */}
-      <ChatBot />
+        <div className="show-more-section">
+          {!loading && !error && visibleArticles < searchResults.length && (
+            <button onClick={handleShowMore} className="show-more-button">
+              Ver más
+            </button>
+          )}
+        </div>
+
+        {/* agregar ChatBot demo */}
+        <ChatBot />
+      </div>
     </>
   );
 };

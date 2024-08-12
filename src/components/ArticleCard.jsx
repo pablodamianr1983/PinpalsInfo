@@ -62,7 +62,7 @@ const ArticleCard = ({ article, onDelete, authorProfile }) => {
         )}
         {isAuthenticated && article.author === userProfile.user__id && (
           <div className="delete-button-container">
-            <button onClick={handleDelete} className="delete-button">Eliminar</button>
+            <button onClick={handleDelete} className="button is-danger is-dark">Eliminar</button>
           </div>
         )}
         {error && <div style={{ color: 'red', marginTop: '1rem' }}>{error}</div>}
