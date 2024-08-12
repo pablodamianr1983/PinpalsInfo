@@ -54,7 +54,7 @@ const Navbar = () => {
           {isAuthenticated ? (
             <>
               <div className="navbar-item">
-                <span>Hola, {userProfile.first_name || 'User'}!</span>
+                <span>Hola  {userProfile.first_name || 'User'}!👋</span>
               </div>
               <div className="navbar-item">
                 <Link to="/profile" className="button is-link is-dark">

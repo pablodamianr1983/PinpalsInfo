@@ -5,10 +5,10 @@
   height: 100vh;
   background-color: #FDD835; 
   color: #000; 
-  background-image: url('../assets/homer.png'); /* Ruta de la imagen */
+  background-image: url('../assets/homer.png'); 
   background-position: left center;
   background-repeat: no-repeat;
-  background-size: 150px; /* Reduce el tamaño de la imagen de Homer */
+  background-size: 150px; 
 }
 
 .login-form-wrapper {
@@ -16,16 +16,16 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  z-index: 1; /* Asegura que el formulario esté encima del fondo */
+  z-index: 1; 
 }
 
 .login-logo-container {
   text-align: center;
-  margin-bottom: 0.5rem; /* Reduce el margen inferior para acercar el logo al formulario */
+  margin-bottom: 0.5rem; 
 }
 
 .login-logo {
-  width: 150px; /* Ajusta el tamaño del logo si es necesario */
+  width: 150px; 
 }
 
 .login-form {
@@ -33,10 +33,10 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
-  max-width: 400px; /* Aumenta el ancho máximo del formulario */
-  padding: 2rem; /* Agrega más padding para darle un poco más de espacio interno */
-  background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco semi-transparente */
-  border-radius: 10px; /* Bordes redondeados */
+  max-width: 400px; 
+  padding: 2rem; 
+  background-color: rgba(255, 255, 255, 0.8); 
+  border-radius: 10px; 
 }
 
 .login-input-container {

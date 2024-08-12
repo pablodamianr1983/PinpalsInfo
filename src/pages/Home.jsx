@@ -136,7 +136,7 @@ const Home = () => {
   return (
     <>
       <Helmet>
-        <title>PinPals</title>
+        <title>PinPals Info</title>
       </Helmet>
       <div className="title-section"></div>
       <div className="search-section">
@@ -144,7 +144,7 @@ const Home = () => {
       </div>
 
       <div className="loading-error-section">
-        {loading && <div>Loading articles...</div>}
+        {loading && <div>Cargando entradas...</div>}
         {error && <div style={{ color: 'red' }}>{error}</div>}
       </div>
 
@@ -163,7 +163,7 @@ const Home = () => {
       <div className="show-more-section">
         {!loading && !error && visibleArticles < searchResults.length && (
           <button onClick={handleShowMore} className="show-more-button">
-            Show More
+            Ver más
           </button>
         )}
       </div>
