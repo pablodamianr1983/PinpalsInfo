@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import api from '../services/api';
+import { Helmet } from 'react-helmet-async';
 import './Profile.css'; 
 import loadingGif from '../assets/dona-loading.gif'; 
 
@@ -109,6 +110,10 @@ const Profile = () => {
   };
 
   return (
+    <>
+  <Helmet>
+    <title>Perfil de usuario | PinPals</title>
+  </Helmet>
     <div className="container">
       <h1></h1>
       <div className="profile-card">
@@ -205,7 +210,9 @@ const Profile = () => {
         </tbody>
       </table>
     </div>
+   </>
   );
 };
+
 
 export default Profile;
