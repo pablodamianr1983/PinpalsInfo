@@ -2,7 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import api from '../services/api';
-import './Profile.css';  // Importación del archivo CSS
+import './Profile.css'; 
+import loadingGif from '../assets/dona-loading.gif'; 
 
 const Profile = () => {
   const { userProfile, token, setUserProfile } = useAuth();
@@ -51,7 +52,7 @@ const Profile = () => {
 
         setArticles(userArticles);
       } catch (err) {
-        setError('Failed to fetch user articles. Please try again later.');
+        setError('Error al cargar tus entradas. Vuelve a intentarlo más tarde.');
       } finally {
         setLoading(false);
       }
@@ -109,7 +110,7 @@ const Profile = () => {
 
   return (
     <div className="container">
-      <h1>Profile</h1>
+      <h1></h1>
       <div className="profile-card">
         <div className="profile-image">
           {userProfile.image && <img src={getImageUrl(userProfile.image)} alt="Profile" />}
@@ -117,60 +118,75 @@ const Profile = () => {
         <div className="profile-details">
           <p><strong>User ID:</strong> {userProfile.user__id}</p>
           <p><strong>Username:</strong> {userProfile.username}</p>
-          <p><strong>First Name:</strong> {userProfile.first_name}</p>
-          <p><strong>Last Name:</strong> {userProfile.last_name}</p>
+          <p><strong>Nombre:</strong> {userProfile.first_name}</p>
+          <p><strong>Apellido:</strong> {userProfile.last_name}</p>
           <p><strong>Email:</strong> {userProfile.email}</p>
           {editMode ? (
-            <form onSubmit={handleEditProfile}>
-              <div>
-                <label htmlFor="bio"><strong>Bio:</strong></label>
-                <textarea
-                  id="bio"
-                  value={bio}
-                  onChange={(e) => setBio(e.target.value)}
-                ></textarea>
+            <form onSubmit={handleEditProfile} className="form">
+              <div className="field">
+                <label className="label" htmlFor="bio"><strong>Algo sobre vos:</strong></label>
+                <div className="control">
+                  <textarea
+                    className="textarea"
+                    id="bio"
+                    value={bio}
+                    onChange={(e) => setBio(e.target.value)}
+                  ></textarea>
+                </div>
               </div>
-              <div>
-                <label htmlFor="dob"><strong>Date of Birth:</strong></label>
-                <input
-                  type="date"
-                  id="dob"
-                  value={dob}
-                  onChange={(e) => setDob(e.target.value)}
-                />
+              <div className="field">
+                <label className="label" htmlFor="dob"><strong>Fecha de nacimiento:</strong></label>
+                <div className="control">
+                  <input
+                    className="input"
+                    type="date"
+                    id="dob"
+                    value={dob}
+                    onChange={(e) => setDob(e.target.value)}
+                  />
+                </div>
               </div>
-              <div>
-                <label htmlFor="image"><strong>Profile Image:</strong></label>
-                <input
-                  type="file"
-                  id="image"
-                  accept="image/*"
-                  onChange={(e) => setImage(e.target.files[0])}
-                />
+              <div className="field">
+                <label className="label" htmlFor="image"><strong>Imagen de perfil:</strong></label>
+                <div className="control">
+                  <input
+                    className="input"
+                    type="file"
+                    id="image"
+                    accept="image/*"
+                    onChange={(e) => setImage(e.target.files[0])}
+                  />
+                </div>
               </div>
-              <button type="submit">Save Changes</button>
-              <button type="button" onClick={() => setEditMode(false)}>Cancel</button>
+              <div className="field is-grouped">
+                <div className="control">
+                  <button type="submit" className="button is-success is-dark">Guardar cambios</button>
+                </div>
+                <div className="control">
+                  <button type="button" className="button is-danger is-dark" onClick={() => setEditMode(false)}>Cancelar</button>
+                </div>
+              </div>
             </form>
           ) : (
             <>
               {userProfile.bio && <p><strong>Bio:</strong> {userProfile.bio}</p>}
-              {userProfile.dob && <p><strong>Birth Date:</strong> {userProfile.dob}</p>}
-              <button onClick={() => setEditMode(true)}>Edit Profile</button>
+              {userProfile.dob && <p><strong>Fecha de nacimiento:</strong> {userProfile.dob}</p>}
+              <button className="button is-link is-dark edit-profile-button" onClick={() => setEditMode(true)}>Editar perfil</button>
             </>
           )}
         </div>
       </div>
-      <h2>My Articles</h2>
-      {loading && <p>Loading articles...</p>}
+      <h2 className="my-entries-title">Mis entradas</h2>
+      {loading && <img src={loadingGif} alt="Cargando..." className="loading-gif" />}
       {error && <p style={{ color: 'red' }}>{error}</p>}
       {!loading && !error && articles.length === 0 && <p>No articles found.</p>}
       <table className="article-list-table">
         <thead>
           <tr>
-            <th>Title</th>
-            <th>Abstract</th>
-            <th>Created On</th>
-            <th>Edit</th>
+            <th>Titulo</th>
+            <th>Resumen</th>
+            <th>Fecha</th>
+            <th>Acción</th>
           </tr>
         </thead>
         <tbody>
@@ -181,7 +197,7 @@ const Profile = () => {
               <td>{new Date(article.created_at).toLocaleDateString()}</td>
               <td>
                 <Link to={`/edit-article/${article.id}`}>
-                  Edit
+                  Editar
                 </Link>
               </td>
             </tr>

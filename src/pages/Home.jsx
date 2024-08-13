@@ -6,13 +6,14 @@ import NewsSearch from '../components/NewsSearch';
 import ChatBot from '../components/ChatBot';
 import { useAuth } from '../contexts/AuthContext';
 import './Home.css';
-import roscaImage from '../rosca.png'; // Importar la imagen
+import roscaImage from '../rosca.png';
+import loadingGif from '../assets/dona-loading.gif'; 
 
 const Home = () => {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
-  const [visibleArticles, setVisibleArticles] = useState(4); // Mostrar 4 artículos inicialmente
+  const [visibleArticles, setVisibleArticles] = useState(4); // 4 artículos iniciales
   const [searchResults, setSearchResults] = useState([]);
   const [categories, setCategories] = useState([]);
   const [userProfiles, setUserProfiles] = useState({});
@@ -150,9 +151,10 @@ const Home = () => {
         </div>
 
         <div className="loading-error-section">
-          {loading && <div>Cargando entradas...</div>}
+          {loading && <img src={loadingGif} alt="Cargando..." className="loading-gif" />} {}
           {error && <div style={{ color: 'red' }}>{error}</div>}
         </div>
+
 
         <div className="articles-container">
           {!loading && !error && searchResults.slice(0, visibleArticles).map(article => (

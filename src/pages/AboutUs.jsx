@@ -17,7 +17,7 @@ const AboutUs = () => {
       
       <div className="message-section">
         <p className="highlight-text">
-          Somos dos amigos y compañero de la carrera apasionados por la tecnología y la innovación, siempre en busca de crear 
+          Somos dos amigos y compañeros de la carrera apasionados por la tecnología y la innovación, siempre en busca de crear 
           cosas geniales que sean útiles y accesibles para todos y todas. Nuestra meta es poder desarrollar aplicaciones que 
           te faciliten la vida, que sean intuitivas y estén al alcance de cualquiera.
         </p>

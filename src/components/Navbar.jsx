@@ -40,7 +40,7 @@ const Navbar = () => {
           <Link to="/" className="navbar-item">
             Home
           </Link>
-          <Link to="/about-us" className="navbar-item"> {/* Corregido el enlace */}
+          <Link to="/about-us" className="navbar-item"> {}
             Quienes Somos
           </Link>
           {isAuthenticated && (
