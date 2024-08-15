@@ -35,13 +35,13 @@ const App = () => {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
-              <Route path="/articles/:id" element={<ArticleDetail />} />
-              <Route path="/profile" element={<ProfilePage />} />
-              <Route path="/edit-article/:id" element={<EditArticle />} />
-              <Route path="/about-us" element={<AboutUs />} />
               <Route element={<ProtectedRoute />}>
-                <Route path="/create-article" element={<CreateArticle />} />
+                <Route path="/articles/:id" element={<ArticleDetail />} />
+                <Route path="/profile" element={<ProfilePage />} />
+                <Route path="/edit-article/:id" element={<EditArticle />} />
+                <Route path="/create-article" element={<CreateArticle />} /> /*arregle rutas protegidas*/
               </Route>
+              <Route path="/about-us" element={<AboutUs />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
             {!hideNavbarAndFooter && <Footer />}
