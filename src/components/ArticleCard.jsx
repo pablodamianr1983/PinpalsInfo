@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import api from '../services/api';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faCalendarAlt, faTags } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faCalendarAlt, faTags, faEdit } from '@fortawesome/free-solid-svg-icons';
 import './ArticleCard.css';
 
 const ArticleCard = ({ article, onDelete, authorProfile }) => {
@@ -19,7 +19,7 @@ const ArticleCard = ({ article, onDelete, authorProfile }) => {
         },
       });
       if (response.status === 204) {
-        onDelete(article.id);
+        onDelete(article.id); // Actualiza la lista de artículos en el componente padre
       }
     } catch (error) {
       if (error.response) {
@@ -61,8 +61,11 @@ const ArticleCard = ({ article, onDelete, authorProfile }) => {
           <span style={{ color: '#f8db27' }}>Iniciar sesión para leer</span>
         )}
         {isAuthenticated && article.author === userProfile.user__id && (
-          <div className="delete-button-container">
-            <button onClick={handleDelete} className="button is-danger is-dark">Eliminar</button>
+          <div className="action-buttons">
+            <Link to={`/edit-article/${article.id}`} className="button is-danger is-dark action-button">
+              <FontAwesomeIcon icon={faEdit} /> Editar
+            </Link>
+            <button onClick={handleDelete} className="button is-danger is-dark action-button">Eliminar</button>
           </div>
         )}
         {error && <div style={{ color: 'red', marginTop: '1rem' }}>{error}</div>}
