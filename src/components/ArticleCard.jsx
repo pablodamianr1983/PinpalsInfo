@@ -11,6 +11,11 @@ const ArticleCard = ({ article, onDelete, authorProfile }) => {
   const [error, setError] = useState('');
 
   const handleDelete = async () => {
+    const confirmed = window.confirm("¿Estás seguro de que deseas eliminar este artículo?");
+    if (!confirmed) {
+      return; // Si el usuario cancela, no hacer nada
+    }
+
     setError('');
     try {
       const response = await api.delete(`/infosphere/articles/${article.id}/`, {
