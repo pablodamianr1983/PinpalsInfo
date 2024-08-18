@@ -24,16 +24,27 @@ const CreateArticle = () => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const response = await api.get('/infosphere/categories/', {
-          headers: {
-            Authorization: `Token ${token}`,
-          },
-        });
-        if (Array.isArray(response.data.results)) {
-          setCategories(response.data.results);
-        } else {
-          console.error('Unexpected response format:', response.data);
+        let allCategories = [];
+        let page = 1;
+        let hasMore = true;
+
+        while (hasMore) {
+          const response = await api.get('/infosphere/categories/', {
+            headers: {
+              Authorization: `Token ${token}`,
+            },
+            params: {
+              page,
+              page_size: 100,
+            },
+          });
+
+          allCategories = [...allCategories, ...response.data.results];
+          hasMore = !!response.data.next;
+          page += 1;
         }
+
+        setCategories(allCategories);
       } catch (error) {
         console.error('Failed to fetch categories:', error);
       }
@@ -77,21 +88,34 @@ const CreateArticle = () => {
 
   const handleAddCategory = async () => {
     setCategoryError('');
-    if (!newCategory) return;
+    
+    if (!newCategory.trim()) {
+      setCategoryError('El nombre de la categoría no puede estar vacío.');
+      return;
+    }
 
     try {
-      const response = await api.post('/infosphere/categories/', { name: newCategory }, {
+      const response = await api.post('/infosphere/categories/', {
+        name: newCategory.trim(), // Asegúrate de que no esté vacío
+        description: '' // Puedes agregar una descripción opcional si lo deseas
+      }, {
         headers: {
           Authorization: `Token ${token}`,
         },
       });
+
       const newCat = response.data;
       setCategories((prevCategories) => [...prevCategories, newCat]);
       setSelectedCategories((prevSelectedCategories) => [...prevSelectedCategories, newCat.id]);
       setNewCategory('');
     } catch (error) {
-      console.error('Failed to add category:', error);
-      setCategoryError('Failed to add category. Please try again later.');
+      if (error.response) {
+        console.error('Failed to add category:', error.response.data);
+        setCategoryError(error.response.data.detail || 'Failed to add category. Please try again later.');
+      } else {
+        console.error('Failed to add category:', error);
+        setCategoryError('Failed to add category. Please try again later.');
+      }
     }
   };
 
