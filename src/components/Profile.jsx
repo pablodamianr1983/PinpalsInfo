@@ -62,6 +62,22 @@ const Profile = () => {
     fetchUserArticles();
   }, [userProfile.user__id]);
 
+  const handleDelete = async (id) => {
+    const confirmed = window.confirm("¿Estás seguro de que deseas eliminar este artículo?");
+    if (!confirmed) return;
+
+    try {
+      await api.delete(`/infosphere/articles/${id}/`, {
+        headers: {
+          Authorization: `Token ${tokenRef.current}`,
+        },
+      });
+      setArticles(articles.filter(article => article.id !== id));
+    } catch (err) {
+      setError('Error al eliminar el artículo. Vuelve a intentarlo más tarde.');
+    }
+  };
+
   const handleEditProfile = async (e) => {
     e.preventDefault();
     const formData = new FormData();
@@ -111,108 +127,113 @@ const Profile = () => {
 
   return (
     <>
-  <Helmet>
-    <title>Perfil de usuario | PinPals</title>
-  </Helmet>
-    <div className="container">
-      <h1></h1>
-      <div className="profile-card">
-        <div className="profile-image">
-          {userProfile.image && <img src={getImageUrl(userProfile.image)} alt="Profile" />}
+      <Helmet>
+        <title>Perfil de usuario | PinPals</title>
+      </Helmet>
+      <div className="container">
+        <h1></h1>
+        <div className="profile-card">
+          <div className="profile-image">
+            {userProfile.image && <img src={getImageUrl(userProfile.image)} alt="Profile" />}
+          </div>
+          <div className="profile-details">
+            <p><strong>User ID:</strong> {userProfile.user__id}</p>
+            <p><strong>Username:</strong> {userProfile.username}</p>
+            <p><strong>Nombre:</strong> {userProfile.first_name}</p>
+            <p><strong>Apellido:</strong> {userProfile.last_name}</p>
+            <p><strong>Email:</strong> {userProfile.email}</p>
+            {editMode ? (
+              <form onSubmit={handleEditProfile} className="form">
+                <div className="field">
+                  <label className="label" htmlFor="bio"><strong>Algo sobre vos:</strong></label>
+                  <div className="control">
+                    <textarea
+                      className="textarea"
+                      id="bio"
+                      value={bio}
+                      onChange={(e) => setBio(e.target.value)}
+                    ></textarea>
+                  </div>
+                </div>
+                <div className="field">
+                  <label className="label" htmlFor="dob"><strong>Fecha de nacimiento:</strong></label>
+                  <div className="control">
+                    <input
+                      className="input"
+                      type="date"
+                      id="dob"
+                      value={dob}
+                      onChange={(e) => setDob(e.target.value)}
+                    />
+                  </div>
+                </div>
+                <div className="field">
+                  <label className="label" htmlFor="image"><strong>Imagen de perfil:</strong></label>
+                  <div className="control">
+                    <input
+                      className="input"
+                      type="file"
+                      id="image"
+                      accept="image/*"
+                      onChange={(e) => setImage(e.target.files[0])}
+                    />
+                  </div>
+                </div>
+                <div className="field is-grouped">
+                  <div className="control">
+                    <button type="submit" className="button is-success is-dark">Guardar cambios</button>
+                  </div>
+                  <div className="control">
+                    <button type="button" className="button is-danger is-dark" onClick={() => setEditMode(false)}>Cancelar</button>
+                  </div>
+                </div>
+              </form>
+            ) : (
+              <>
+                {userProfile.bio && <p><strong>Bio:</strong> {userProfile.bio}</p>}
+                {userProfile.dob && <p><strong>Fecha de nacimiento:</strong> {userProfile.dob}</p>}
+                <button className="button is-link is-dark edit-profile-button" onClick={() => setEditMode(true)}>Editar perfil</button>
+              </>
+            )}
+          </div>
         </div>
-        <div className="profile-details">
-          <p><strong>User ID:</strong> {userProfile.user__id}</p>
-          <p><strong>Username:</strong> {userProfile.username}</p>
-          <p><strong>Nombre:</strong> {userProfile.first_name}</p>
-          <p><strong>Apellido:</strong> {userProfile.last_name}</p>
-          <p><strong>Email:</strong> {userProfile.email}</p>
-          {editMode ? (
-            <form onSubmit={handleEditProfile} className="form">
-              <div className="field">
-                <label className="label" htmlFor="bio"><strong>Algo sobre vos:</strong></label>
-                <div className="control">
-                  <textarea
-                    className="textarea"
-                    id="bio"
-                    value={bio}
-                    onChange={(e) => setBio(e.target.value)}
-                  ></textarea>
-                </div>
-              </div>
-              <div className="field">
-                <label className="label" htmlFor="dob"><strong>Fecha de nacimiento:</strong></label>
-                <div className="control">
-                  <input
-                    className="input"
-                    type="date"
-                    id="dob"
-                    value={dob}
-                    onChange={(e) => setDob(e.target.value)}
-                  />
-                </div>
-              </div>
-              <div className="field">
-                <label className="label" htmlFor="image"><strong>Imagen de perfil:</strong></label>
-                <div className="control">
-                  <input
-                    className="input"
-                    type="file"
-                    id="image"
-                    accept="image/*"
-                    onChange={(e) => setImage(e.target.files[0])}
-                  />
-                </div>
-              </div>
-              <div className="field is-grouped">
-                <div className="control">
-                  <button type="submit" className="button is-success is-dark">Guardar cambios</button>
-                </div>
-                <div className="control">
-                  <button type="button" className="button is-danger is-dark" onClick={() => setEditMode(false)}>Cancelar</button>
-                </div>
-              </div>
-            </form>
-          ) : (
-            <>
-              {userProfile.bio && <p><strong>Bio:</strong> {userProfile.bio}</p>}
-              {userProfile.dob && <p><strong>Fecha de nacimiento:</strong> {userProfile.dob}</p>}
-              <button className="button is-link is-dark edit-profile-button" onClick={() => setEditMode(true)}>Editar perfil</button>
-            </>
-          )}
-        </div>
-      </div>
-      <h2 className="my-entries-title">Mis entradas</h2>
-      {loading && <img src={loadingGif} alt="Cargando..." className="loading-gif" />}
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-      {!loading && !error && articles.length === 0 && <p>No articles found.</p>}
-      <table className="article-list-table">
-        <thead>
-          <tr>
-            <th>Titulo</th>
-            <th>Resumen</th>
-            <th>Fecha</th>
-            <th>Acción</th>
-          </tr>
-        </thead>
-        <tbody>
-          {!loading && !error && articles.map(article => (
-            <tr key={article.id}>
-              <td>{article.title}</td>
-              <td>{article.abstract}</td>
-              <td>{new Date(article.created_at).toLocaleDateString()}</td>
-              <td>
-                <Link to={`/edit-article/${article.id}`}>
-                  Editar
-                </Link>
-              </td>
+        <h2 className="my-entries-title">Mis entradas</h2>
+        {loading && <img src={loadingGif} alt="Cargando..." className="loading-gif" />}
+        {error && <p style={{ color: 'red' }}>{error}</p>}
+        {!loading && !error && articles.length === 0 && <p>No articles found.</p>}
+        <table className="article-list-table">
+          <thead>
+            <tr>
+              <th>Titulo</th>
+              <th>Resumen</th>
+              <th>Fecha</th>
+              <th>Acción</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-   </>
+          </thead>
+          <tbody>
+            {!loading && !error && articles.map(article => (
+              <tr key={article.id}>
+                <td>{article.title}</td>
+                <td>{article.abstract}</td>
+                <td>{new Date(article.created_at).toLocaleDateString()}</td>
+                <td className="action-buttons">
+                  <Link to={`/edit-article/${article.id}`} className="button is-link is-dark action-button">
+                    Editar
+                  </Link>
+                  <button
+                    onClick={() => handleDelete(article.id)}
+                    className="button is-danger is-dark action-button"
+                  >
+                    Eliminar
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </>
   );
 };
-
 
 export default Profile;

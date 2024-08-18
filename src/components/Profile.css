@@ -20,18 +20,15 @@
   margin: 0.25rem 0;
 }
 
-
 .custom-user-id strong {
   color: #ff6347; 
   font-weight: bold;
   font-size: 1.1rem;
 }
 
-
 .profile-details strong {
   color: #ff81c1; 
 }
-
 
 .profile-image img {
   width: 100px;
@@ -39,7 +36,6 @@
   border-radius: 50%;
   object-fit: cover;
 }
-
 
 .article-list-table {
   width: 100%;
@@ -116,5 +112,39 @@
 
 .form {
   background-color: #212121;
+}
 
+/* Estilos para los botones de acción en el listado de artículos */
+.action-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.action-button {
+  flex: 1;
+  text-align: center;
+  padding: 8px 16px;
+  background-color: #444444;
+  color: #ffffff;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.action-button:hover {
+  background-color: #1e90ff;
+}
+
+/* Igualando tamaño de los botones */
+.action-button:first-child {
+  margin-right: 0.5rem;
+}
+
+.action-buttons a,
+.action-buttons button {
+  display: inline-block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+  text-align: center;
 }
