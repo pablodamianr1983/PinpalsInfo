@@ -217,6 +217,9 @@ const Profile = () => {
                 <td>{article.abstract}</td>
                 <td>{new Date(article.created_at).toLocaleDateString()}</td>
                 <td className="action-buttons">
+                  <Link to={`/articles/${article.id}`} className="button is-link is-dark action-button">
+                    Ver
+                  </Link>
                   <Link to={`/edit-article/${article.id}`} className="button is-link is-dark action-button">
                     Editar
                   </Link>

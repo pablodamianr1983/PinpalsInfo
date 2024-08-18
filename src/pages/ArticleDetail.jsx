@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom'; // Importa useNavigate
 import api from '../services/api';
 import { useAuth } from '../contexts/AuthContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -9,6 +9,7 @@ import './ArticleDetail.css';
 
 const ArticleDetail = () => {
   const { id } = useParams();
+  const navigate = useNavigate(); // Inicializa useNavigate
   const [article, setArticle] = useState(null);
   const [comments, setComments] = useState([]);
   const [userProfiles, setUserProfiles] = useState({});
@@ -17,6 +18,12 @@ const ArticleDetail = () => {
   const { token, userProfile } = useAuth();
 
   useEffect(() => {
+    // Verifica si el usuario está autenticado
+    if (!token) {
+      navigate('/login'); // Redirige al inicio de sesión si no hay token
+      return;
+    }
+
     const fetchArticle = async () => {
       try {
         const response = await api.get(`/infosphere/articles/${id}/`, {
@@ -94,14 +101,12 @@ const ArticleDetail = () => {
 
     fetchArticle();
     fetchComments();
-  }, [id, token]);
+  }, [id, token, navigate]); // Añade navigate a las dependencias para evitar errores de advertencia
 
   const handleCommentAdded = async (comment) => {
     try {
-      // Agrega el comentario al estado actual
       setComments([...comments, comment]);
 
-      // Actualiza el perfil del usuario que acaba de comentar
       const userId = comment.author;
       const response = await api.get(`/users/profiles/${userId}/`, {
         headers: {
@@ -113,7 +118,6 @@ const ArticleDetail = () => {
         ...prevProfiles,
         [response.data.user__id]: response.data,
       }));
-
     } catch (err) {
       console.error('Error updating comments or fetching user profile:', err);
       setError('Failed to refresh comments and profiles. Please try again later.');
@@ -128,15 +132,19 @@ const ArticleDetail = () => {
   };
 
   const handleDeleteComment = async (commentId) => {
-    try {
-      await api.delete(`/infosphere/comments/${commentId}/`, {
-        headers: {
-          Authorization: `Token ${token}`,
-        },
-      });
-      setComments(comments.filter(comment => comment.id !== commentId));
-    } catch (err) {
-      console.error('Error deleting comment:', err);
+    const confirmDelete = window.confirm('¿Estás seguro de que quieres eliminar este comentario?');
+    if (confirmDelete) {
+      try {
+        await api.delete(`/infosphere/comments/${commentId}/`, {
+          headers: {
+            Authorization: `Token ${token}`,
+          },
+        });
+        setComments(comments.filter(comment => comment.id !== commentId));
+      } catch (err) {
+        console.error('Error deleting comment:', err);
+        setError('Failed to delete comment. Please try again later.');
+      }
     }
   };
 
