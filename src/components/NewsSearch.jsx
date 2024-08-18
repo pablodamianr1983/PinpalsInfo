@@ -1,22 +1,58 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faList } from '@fortawesome/free-solid-svg-icons';
+import api from '../services/api';
+import { useAuth } from '../contexts/AuthContext'; // Asegúrate de importar el contexto de autenticación
 import '../styles/NewsSearch.css';
 
-const NewsSearch = ({ categories, onSearch }) => {
+const NewsSearch = ({ onSearch }) => {
   const [query, setQuery] = useState('');
+  const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('');
+  const { token } = useAuth(); // Usar token desde el contexto
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        let allCategories = [];
+        let page = 1;
+        let hasMore = true;
+
+        while (hasMore) {
+          const response = await api.get('/infosphere/categories/', {
+            headers: {
+              Authorization: `Token ${token}`, // Usar token desde el contexto
+            },
+            params: {
+              page,
+              page_size: 100, // Tamaño de página ajustado
+            },
+          });
+
+          allCategories = [...allCategories, ...response.data.results];
+          hasMore = !!response.data.next;
+          page += 1;
+        }
+
+        setCategories(allCategories);
+      } catch (error) {
+        console.error('Failed to fetch categories:', error);
+      }
+    };
+
+    if (token) {
+      fetchCategories();
+    }
+  }, [token]);
 
   const handleSearch = (e) => {
     e.preventDefault();
     
-    // Si ambos campos están vacíos, no se permite la búsqueda.
     if (query.trim() === '' && selectedCategory === '') {
       alert('Por favor, completa al menos uno de los campos: búsqueda o categoría.');
       return;
     }
     
-    // Ejecuta la búsqueda con los valores proporcionados
     onSearch(query, selectedCategory);
   };
 
@@ -46,11 +82,15 @@ const NewsSearch = ({ categories, onSearch }) => {
               onChange={(e) => setSelectedCategory(e.target.value)}
             >
               <option value="">Todas las categorías</option>
-              {Array.isArray(categories) && categories.map((category) => (
-                <option key={category.id} value={category.name}>
-                  {category.name}
-                </option>
-              ))}
+              {Array.isArray(categories) && categories.length > 0 ? (
+                categories.map((category) => (
+                  <option key={category.id} value={category.name}>
+                    {category.name}
+                  </option>
+                ))
+              ) : (
+                <option value="">No hay categorías disponibles</option>
+              )}
             </select>
             <span className="icon is-small is-left">
               <FontAwesomeIcon icon={faList} />
