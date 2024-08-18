@@ -155,7 +155,6 @@ const Home = () => {
           {error && <div style={{ color: 'red' }}>{error}</div>}
         </div>
 
-
         <div className="articles-container">
           {!loading && !error && searchResults.slice(0, visibleArticles).map(article => (
             <ArticleCard
@@ -176,8 +175,7 @@ const Home = () => {
           )}
         </div>
 
-        {/* agregar ChatBot demo */}
-        <ChatBot />
+        <ChatBot articles={articles} />
       </div>
     </>
   );

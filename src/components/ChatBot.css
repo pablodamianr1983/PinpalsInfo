@@ -1,6 +1,6 @@
 .chat-bot {
   position: fixed;
-  bottom: 20px;
+  bottom: 100px;
   right: 20px;
   width: 80px;
   height: 80px;
@@ -14,18 +14,47 @@
   border-radius: 50%;
 }
 
+.chat-bot input {
+  position: absolute;
+  bottom: -70%;
+  left: 0;
+  right: 0;
+  width: 80%; /* Ajusta según el tamaño deseado */
+  margin: 5px 10%;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.chat-bot button {
+  position: absolute;
+  bottom: -99%;
+  right: 0;
+  width: 80px;
+  margin: 5px 10%;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: #ffe600;
+  color: #000;
+  border: 2px solid #000;
+  font-family: 'Comic Sans MS', sans-serif;
+  box-shadow: 2px 2px 0 #000;
+  cursor: pointer;
+}
+
 .chat-bot-message {
   position: absolute;
   bottom: 100%;
   left: auto;
-  right: 100%;
-  transform: translateX(-10px);
+  right: 400%;
+  transform: translateX(50%);
   background-color: #ffe600;
   color: #000;
-  padding: 8px 12px;
+  padding: 10px 20px;
   border-radius: 5px;
   white-space: pre-wrap;
-  max-width: 250px;
+  min-width: 600px; /* Asegura un ancho mínimo */
+  max-width: 400px; /* Asegura que el cuadro no se expanda demasiado */
   opacity: 0;
   transition: opacity 0.3s ease;
   border: 2px solid #000;
