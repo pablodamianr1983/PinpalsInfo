@@ -8,12 +8,7 @@ const Login = () => {
     <>
       <Helmet>
         <title>PinPals | Login</title>
-      </Helmet>
-      
-      <div className="title-section">
-        <h2></h2>
-      </div>
-      
+      </Helmet>     
       <div className="form-section">
         <LoginForm />
       </div>

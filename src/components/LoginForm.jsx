@@ -3,26 +3,70 @@ import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import '../styles/LoginForm.css'; 
 import logo from '../assets/pinpals-logo.png';  
+import homerImage from '../assets/homer1.png';
+import homer2Image from '../assets/homer2.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faLock } from '@fortawesome/free-solid-svg-icons';
+
+// Componente Modal
+const Modal = ({ show, onClose, message }) => {
+  if (!show) return null;
+
+  return (
+    <div className="modal-backdrop">
+      <div className="modal-content">
+        <p>{message}</p>
+        <button onClick={onClose} className="button is-danger is-dark">Cerrar</button>
+      </div>
+    </div>
+  );
+};
 
 const LoginForm = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
-  const { login, authError, authSuccess } = useAuth(); 
+  const [backgroundImage, setBackgroundImage] = useState(homerImage); 
+  const [showModal, setShowModal] = useState(false); // Estado que controla el modal
+  const [errorMessage, setErrorMessage] = useState(''); // Estado que cobtrola el mensaje de error personalizado
+  const { login, authError } = useAuth(); 
   const navigate = useNavigate();
+
+  const handlePasswordFocus = () => {
+    setBackgroundImage(homer2Image);
+  };
+
+  const handlePasswordBlur = () => {
+    setBackgroundImage(homerImage);
+  };
+
+  // Función para mensaje de error
+  const getErrorMessage = (error) => {
+    if (error.includes('wrong password')) {
+      return 'La contraseña que ingresaste es incorrecta. Por favor, inténtalo de nuevo.';
+    } else if (error.includes('user not found')) {
+      return 'El usuario no existe. Verifica tu nombre de usuario.';
+    } else {
+      return 'La contraseña no es correcta. Compruébala.';
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     await login(username, password, rememberMe); 
-    if (!authError) {
+    if (authError) {
+      setErrorMessage(getErrorMessage(authError)); // Establece el mensaje personalizado
+      setShowModal(true); // Muestra el modal si hay un error
+    } else {
       navigate('/');
     }
   };
 
   return (
-    <div className="login-form-container">
+    <div 
+      className="login-form-container" 
+      style={{ backgroundImage: `url(${backgroundImage})` }} 
+    >
       <div className="login-form-wrapper">
         <div className="login-logo-container">
           <Link to="/">
@@ -56,6 +100,8 @@ const LoginForm = () => {
                 type="password"
                 placeholder="Contraseña"
                 value={password}
+                onFocus={handlePasswordFocus}  
+                onBlur={handlePasswordBlur}    
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
@@ -82,16 +128,11 @@ const LoginForm = () => {
             </p>
           </div>
         </form>
-        {authError && (
-          <div className="auth-message-container">
-            <div className="auth-message" style={{ color: 'red' }}>{authError}</div>
-          </div>
-        )}
-        {authSuccess && (
-          <div className="auth-message-container">
-            <div className="auth-message" style={{ color: 'green' }}>{authSuccess}</div>
-          </div>
-        )}
+        <Modal 
+          show={showModal} 
+          onClose={() => setShowModal(false)} 
+          message={errorMessage} // Usa el mensaje de error personalizado
+        />
       </div>
     </div>
   );
