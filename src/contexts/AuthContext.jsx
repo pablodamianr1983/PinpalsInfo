@@ -33,7 +33,7 @@ export const AuthProvider = ({ children }) => {
       localStorage.setItem('token', userToken);
       await fetchProfile(userToken);
       setAuthSuccess('Token generated successfully!');
-      navigate('/profile');
+      navigate('/');
     } catch (err) {
       setAuthError('Login failed. Please check your credentials.');
     }

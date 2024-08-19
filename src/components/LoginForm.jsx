@@ -28,7 +28,7 @@ const LoginForm = () => {
   const [rememberMe, setRememberMe] = useState(false);
   const [backgroundImage, setBackgroundImage] = useState(homerImage); 
   const [showModal, setShowModal] = useState(false); // Estado que controla el modal
-  const [errorMessage, setErrorMessage] = useState(''); // Estado que cobtrola el mensaje de error personalizado
+  const [errorMessage, setErrorMessage] = useState(''); // Estado que controla el mensaje de error personalizado
   const { login, authError } = useAuth(); 
   const navigate = useNavigate();
 
@@ -47,18 +47,18 @@ const LoginForm = () => {
     } else if (error.includes('user not found')) {
       return 'El usuario no existe. Verifica tu nombre de usuario.';
     } else {
-      return 'La contraseña no es correcta. Compruébala.';
+      return 'Hubo un error al intentar iniciar sesión. Por favor, inténtalo más tarde.';
     }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await login(username, password, rememberMe); 
+    const success = await login(username, password, rememberMe); 
     if (authError) {
       setErrorMessage(getErrorMessage(authError)); // Establece el mensaje personalizado
       setShowModal(true); // Muestra el modal si hay un error
-    } else {
-      navigate('/');
+    } else if (success) {
+      navigate("/", { replace: true }); // Redirige al home solo si el login fue exitoso
     }
   };
 
