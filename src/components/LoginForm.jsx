@@ -47,7 +47,7 @@ const LoginForm = () => {
     } else if (error.includes('user not found')) {
       return 'El usuario no existe. Verifica tu nombre de usuario.';
     } else {
-      return 'Hubo un error al intentar iniciar sesión. Por favor, inténtalo más tarde.';
+      return 'Ups, al parecer tus datos son incorrectos.';
     }
   };
 
